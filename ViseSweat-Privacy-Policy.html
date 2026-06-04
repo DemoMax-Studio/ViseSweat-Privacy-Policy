@@ -1,765 +1,1385 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Security Core</title>
+    <title>Privacy Policy & Legal Terms</title>
     <style>
-        /* TEMA CLARO ESTRITO (PRETO NO BRANCO) */
-        :root[data-theme="light"] {
-            --bg: #ffffff;
-            --text-main: #000000;
-            --border: #000000;
-            --hover: #eeeeee;
-        }
-
-        /* TEMA ESCURO ESTRITO (BRANCO NO PRETO) */
-        :root[data-theme="dark"] {
-            --bg: #000000;
-            --text-main: #ffffff;
-            --border: #ffffff;
-            --hover: #111111;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
         body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: "Courier New", Courier, monospace;
-            font-size: 14px;
-            line-height: 1.6;
-            padding: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 16px;
+            line-height: 1.7;
+            padding: 40px 20px;
         }
 
-        .container {
-            max-width: 800px;
+        .doc-wrapper {
+            max-width: 750px;
             margin: 0 auto;
-            border: 1px solid var(--border);
-            padding: 30px;
         }
 
-        header {
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 20px;
+        /* SELETOR DE IDIOMA - ESTILO DOCUMENTO OFICIAL */
+        .lang-selector-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .lang-label {
+            font-family: "Arial", Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .lang-select {
+            font-family: "Arial", Helvetica, sans-serif;
+            font-size: 14px;
+            padding: 8px 30px 8px 12px;
+            border: 2px solid #000000;
+            background: #ffffff;
+            color: #000000;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 16px;
+        }
+
+        .lang-select:hover { background-color: #f5f5f5; }
+
+        /* TÍTULO PRINCIPAL */
+        h1.doc-title {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .title-divider {
+            width: 100%;
+            height: 3px;
+            background: #000000;
+            margin-bottom: 25px;
+        }
+
+        .last-updated {
+            font-style: italic;
+            font-size: 15px;
             margin-bottom: 30px;
         }
 
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 20px;
+        .intro-text {
+            margin-bottom: 35px;
+            text-align: justify;
         }
 
-        .sys-title {
-            font-size: 1rem;
-            font-weight: bold;
+        /* SEÇÕES DO DOCUMENTO */
+        .section { margin-bottom: 35px; }
+
+        .section h2 {
+            font-size: 1.15rem;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .controls { display: flex; gap: 10px; }
-
-        select, button {
-            background: var(--bg);
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            padding: 8px 12px;
-            font-family: inherit;
-            font-size: 0.85rem;
-            cursor: pointer;
-            outline: none;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        select:hover, button:hover { background: var(--hover); }
-
-        h1 { font-size: 1.5rem; margin-bottom: 10px; text-transform: uppercase; }
-
-        .meta {
-            font-size: 0.85rem;
-            margin-bottom: 40px;
-            border-bottom: 1px dashed var(--border);
-            padding-bottom: 10px;
-        }
-
-        .lang-block { display: none; }
-        .lang-block.active { display: block; }
-
-        .terms-body h2 {
-            font-size: 1.1rem;
-            margin: 40px 0 15px 0;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 5px;
-        }
-
-        .terms-body > p { margin-bottom: 20px; }
-
-        details {
+            letter-spacing: 0.5px;
             margin-bottom: 15px;
-            border: 1px solid var(--border);
-            background: var(--bg);
+            line-height: 1.4;
         }
 
-        summary {
-            padding: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            list-style: none;
-            display: flex;
-            align-items: flex-start;
-            user-select: none;
-        }
-
-        summary:hover { background: var(--hover); }
-        summary::-webkit-details-marker { display: none; }
-
-        summary::before {
-            content: '•';
-            margin-right: 15px;
-            font-size: 1.2rem;
-            line-height: 1.2;
-        }
-
-        .details-content {
-            padding: 15px 15px 20px 40px;
-            border-top: 1px dashed var(--border);
-        }
-
-        .details-content p::before {
-            content: '°';
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        .details-content p {
+        .section > p {
             margin-bottom: 15px;
             text-align: justify;
         }
 
-        .details-content p:last-child { margin-bottom: 0; }
+        /* LISTAS COM BULLET POINTS CLÁSSICOS */
+        .doc-list {
+            list-style: disc;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
 
+        .doc-list li {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .doc-list li strong {
+            font-weight: 900;
+        }
+
+        .doc-list li:last-child { margin-bottom: 0; }
+
+        /* LINKS - GARANTINDO FUNCIONALIDADE E VISIBILIDADE */
         a {
-            color: var(--text-main);
+            color: #000000;
             text-decoration: underline;
             font-weight: bold;
+            word-break: break-all; /* Previne quebra de layout em mobile */
         }
 
-        a:hover {
-            background: var(--text-main);
-            color: var(--bg);
+        a:hover { 
+            text-decoration: none; 
+            background-color: #eeeeee;
         }
 
-        footer {
-            margin-top: 50px;
-            border-top: 2px solid var(--border);
-            padding-top: 20px;
-            font-size: 0.8rem;
-            text-align: center;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        /* BLOCOS DE IDIOMA */
+        .lang-block { display: none; }
+        .lang-block.active { display: block; }
 
         @media (max-width: 600px) {
-            .container { padding: 15px; border: none; border-top: 1px solid var(--border); }
-            body { padding: 5px; }
-            .details-content { padding-left: 20px; }
+            body { padding: 20px 15px; }
+            h1.doc-title { font-size: 1.5rem; }
+            .section h2 { font-size: 1rem; }
+            .doc-list { padding-left: 20px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <div class="header-top">
-            <div class="sys-title">SECURITY_CORE_LEGAL</div>
-            <div class="controls">
-                <select id="lang-select" onchange="switchLang(this.value)">
-                    <option value="en" selected>English (EN)</option>
-                    <option value="pt">Português (PT)</option>
-                    <option value="es">Español (ES)</option>
-                    <option value="it">Italiano (IT)</option>
-                    <option value="fr">Français (FR)</option>
-                    <option value="de">Deutsch (DE)</option>
-                    <option value="ja">日本語 (JA)</option>
-                    <option value="ru">Русский (RU)</option>
-                    <option value="zh">中文 (ZH)</option>
-                </select>
-                <button id="theme-toggle" onclick="toggleTheme()">INVERT</button>
-            </div>
-        </div>
-    </header>
+<div class="doc-wrapper">
 
-    <main>
-        <!-- ========================================== -->
-        <!-- 1. ENGLISH -->
-        <!-- ========================================== -->
-        <div id="lang-en" class="lang-block active">
-            <h1>Privacy Policy & Legal Terms</h1>
-            <p class="meta">LAST UPDATED: JUNE 2026 // REVISION: 26.1</p>
-            <div class="terms-body">
-                <p>This document constitutes a binding legal agreement governing the architecture, disclaimers, and operational terms of the application.</p>
-                <h2>1. Privacy by Design & Global Compliance</h2>
-                <p>The application is structured under strict Privacy by Design principles.</p>
-                <details><summary>Storage and Encryption</summary><div class="details-content"><p>The system operates under a strict "Zero-Knowledge" infrastructure. All user-entered data resides exclusively within the local internal hardware partition of the user's own device.</p></div></details>
-                <details><summary>Data Monetization</summary><div class="details-content"><p>The developer does not collect, mirror, compile, or transmit telemetry metadata based on your physical or psychological condition.</p></div></details>
-                <h2>2. Offline-First Architecture</h2>
-                <p>Unlike standard cloud-dependent services, all interactions occur locally.</p>
-                <details><summary>Connectivity Boundaries</summary><div class="details-content"><p>Local logging features function completely independent of cellular networks or internet connections, mitigating remote interception risks (Man-in-the-Middle - MITM attacks).</p></div></details>
-                <details><summary>Outbound Network Traffic</summary><div class="details-content"><p>External network traffic is strictly limited to transaction management processed via the Google Play Billing API and the integration of device native operating system requests.</p></div></details>
-                <h2>3. Local Access & Credential Recovery</h2>
-                <p>The localized security locking mechanism serves as a defensive barrier.</p>
-                <details><summary>Absence of Master Access</summary><div class="details-content"><p>The software does not maintain a centralized database, "super passwords", administrative backdoors, or credential recovery servers.</p></div></details>
-                <details><summary>Irreversible Data Purge</summary><div class="details-content"><p>In the event of a forgotten PIN, data recovery is technically impossible. The only alternative is a complete reinstallation, resulting in the immediate and permanent deletion of all local databases.</p></div></details>
-                <h2>4. Clinical Disclaimer</h2>
-                <p>The application explicitly disclaims any clinical or therapeutic utility.</p>
-                <details><summary>Medical Structure Exclusion</summary><div class="details-content"><p>No data, metrics, suggestions, or logs contained within this software replace or constitute medical advice, psychological support, psychiatric intervention, or hospital diagnostic protocols.</p></div></details>
-                <details><summary>"As-Is" Provision</summary><div class="details-content"><p>The service is provided in its current state. Any health decline, clinical emergency, or worsening of symptoms remains under the sole responsibility and personal scope of the user.</p></div></details>
-                <h2>5. Physical Risk & Exercises</h2>
-                <p>Emergency redirection modules may suggest localized exercises.</p>
-                <details><summary>Physical Damage Indemnification</summary><div class="details-content"><p>The execution of physical or cardiovascular activities suggested by the screen occurs at the sole choice and medical risk of the user.</p></div></details>
-                <h2>6. User-Generated Content (UGC)</h2>
-                <p>The application acts as a passive, unmonitored digital vault.</p>
-                <details><summary>Legal Attribution & Liability</summary><div class="details-content"><p>The user retains 100% legal ownership and subsequent civil liability for all content, notes, and media imported or recorded within the application.</p></div></details>
-                <h2>7. Ad Guidelines & Monetization</h2>
-                <p>To sustain development, the application incorporates advertising models.</p>
-                <details><summary>Ad Display & Data Isolation</summary><div class="details-content"><p>The free version may display ads provided by third-party networks (e.g., Google AdMob). These networks use basic device identifiers for delivery. No sensitive data is shared. See the <a href="https://policies.google.com/privacy" target="_blank">Google AdMob Privacy Policy</a>.</p></div></details>
-                <h2>8. Premium Subscription</h2>
-                <p>Users may voluntarily unlock extended feature sets.</p>
-                <details><summary>Payment Execution & Refunds</summary><div class="details-content"><p>The entire billing flow is handled via Google Play Billing. Refund requests must be mediated through official Google Play Store channels subject to their guidelines.</p></div></details>
-                <h2>9. Intellectual Property</h2>
-                <p>The system represents the exclusive asset of the developer.</p>
-                <details><summary>Code Safeguards</summary><div class="details-content"><p>Any attempt to decompile, reverse engineer, or distribute unofficial modifications ("Modified APKs") constitutes a material breach resulting in immediate license revocation.</p></div></details>
-                <h2>10. Force Majeure & Hardware</h2>
-                <p>Protection against operational failures outside engineering control.</p>
-                <details><summary>Device Alterations & Exclusions</summary><div class="details-content"><p>Factory resets, device theft, OS corruption, or malware permanently erase local records. The developer is exempt from data reconstruction obligations.</p></div></details>
-                <h2>11. Damage Limitation</h2>
-                <p>Explicit limits on financial litigation exposure.</p>
-                <details><summary>Financial Ceiling</summary><div class="details-content"><p>Maximum liability for any proven damage is strictly fixed to the total amount paid by the user for premium services during the 60 days immediately preceding the event.</p></div></details>
-                <h2>12. Severability Clause</h2>
-                <p>Preservation of the structural integrity of the legal framework.</p>
-                <details><summary>Provision Isolation</summary><div class="details-content"><p>If any section is declared void by a court, it affects exclusively that isolated provision. All other clauses remain operational and valid.</p></div></details>
-                <h2>13. Class-Action Waiver</h2>
-                <p>Litigation resolution is strictly limited to the individual scope.</p>
-                <details><summary>Individualized Resolution</summary><div class="details-content"><p>The user expressly agrees to waive the right to initiate, join, or participate in any class action, group litigation, or joint arbitration against the developers.</p></div></details>
-                <h2>14. Definitive Legal Acceptance</h2>
-                <p>Confirmation of terms established upon use.</p>
-                <details><summary>Tacit Consent</summary><div class="details-content"><p>Advancing in the application interface serves as formal digital endorsement, after which claims of ignorance of the terms will not be accepted.</p></div></details>
-                <h2>15. Contact & Support</h2>
-                <p>Channels for administrative communication.</p>
-                <details><summary>Official Channels</summary><div class="details-content"><p>For clarifications or support, contact exclusively through the official support email provided on the store application download page.</p></div></details>
-            </div>
+    <!-- SELETOR DE IDIOMA -->
+    <div class="lang-selector-row">
+        <span class="lang-label">LANGUAGE / IDIOMA:</span>
+        <select class="lang-select" id="lang-select" onchange="switchLang(this.value)">
+            <option value="en" selected>English (EN)</option>
+            <option value="pt">Português (PT)</option>
+            <option value="es">Español (ES)</option>
+            <option value="it">Italiano (IT)</option>
+            <option value="fr">Français (FR)</option>
+            <option value="de">Deutsch (DE)</option>
+            <option value="ja">日本語 (JA)</option>
+            <option value="ru">Русский (RU)</option>
+            <option value="zh">中文 (ZH)</option>
+        </select>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- ENGLISH -->
+    <!-- ========================================== -->
+    <div id="lang-en" class="lang-block active">
+        <h1 class="doc-title">PRIVACY POLICY &amp; LEGAL TERMS</h1>
+        <div class="title-divider"></div>
+        <p class="last-updated">Last updated: June 2026</p>
+        <p class="intro-text">This document constitutes a binding legal agreement governing the architecture, liability exemptions, and operational terms of the application.</p>
+
+        <div class="section">
+            <h2>1. PRIVACY BY DESIGN &amp; GLOBAL COMPLIANCE FRAMEWORK</h2>
+            <p>The application is structured upon strict Privacy by Design principles, operating in adherence to international data protection standards including GDPR, CCPA, and LGPD.</p>
+            <ul class="doc-list">
+                <li><strong>Storage &amp; Cryptography:</strong> The system operates under a strict "Zero-Knowledge" infrastructure. All user-inputted architecture (sobriety metrics, behavioral logs, personal records) is stored exclusively within the internal local hardware partition of the user's personal device.</li>
+                <li><strong>Data Monetization:</strong> The developer does not harvest, mirror, compile, or transmit telemetry metadata regarding your physical or psychological condition.</li>
+            </ul>
         </div>
 
-        <!-- ========================================== -->
-        <!-- 2. PORTUGUÊS -->
-        <!-- ========================================== -->
-        <div id="lang-pt" class="lang-block">
-            <h1>Política de Privacidade e Termos Legais</h1>
-            <p class="meta">ÚLTIMA ATUALIZAÇÃO: JUNHO DE 2026 // REVISÃO: 26.1</p>
-            <div class="terms-body">
-                <p>Este documento constitui um acordo legal vinculativo que rege a arquitetura, as isenções de responsabilidade e os termos operacionais do aplicativo.</p>
-                <h2>1. Privacidade por Design e Conformidade</h2>
-                <p>O aplicativo é estruturado sob os princípios estritos de Privacy by Design.</p>
-                <details><summary>Armazenamento e Criptografia</summary><div class="details-content"><p>O sistema opera sob uma infraestrutura estrita de "Zero-Knowledge". Todos os dados inseridos residem exclusivamente na partição de hardware local interna do próprio dispositivo do usuário.</p></div></details>
-                <details><summary>Monetização de Dados</summary><div class="details-content"><p>A desenvolvedora não coleta, espelha, compila ou transmite metadados de telemetria baseados na sua condição física ou psicológica.</p></div></details>
-                <h2>2. Arquitetura Offline-First</h2>
-                <p>Todas as interações ocorrem inteiramente fora do perímetro de desenvolvimento.</p>
-                <details><summary>Fronteiras de Conectividade</summary><div class="details-content"><p>Os recursos de registro local funcionam de forma totalmente independente de redes celulares ou conexões de internet, mitigando riscos de interceptação remota.</p></div></details>
-                <details><summary>Tráfego de Rede de Saída</summary><div class="details-content"><p>O tráfego de rede externa limita-se estritamente ao gerenciamento de transações processadas via Google Play Billing API.</p></div></details>
-                <h2>3. Restrições de Acesso Local</h2>
-                <p>Mecanismo de bloqueio serve como barreira contra acesso não autorizado.</p>
-                <details><summary>Ausência de Acesso Mestre</summary><div class="details-content"><p>O software não mantém banco de dados centralizado, "super senhas", backdoors administrativos ou servidores de recuperação de credenciais.</p></div></details>
-                <details><summary>Purga Irreversível de Dados</summary><div class="details-content"><p>Em caso de esquecimento do PIN, a recuperação de dados é tecnicamente impossível. A única alternativa é a reinstalação, resultando na exclusão permanente dos bancos de dados locais.</p></div></details>
-                <h2>4. Isenção de Responsabilidade Clínica</h2>
-                <p>O aplicativo atua como ferramenta passiva e não terapêutica.</p>
-                <details><summary>Exclusão de Estrutura Médica</summary><div class="details-content"><p>Nenhum dado, métrica ou sugestão contido neste software substitui ou constitui aconselhamento médico, suporte psicológico ou diagnóstico hospitalar.</p></div></details>
-                <details><summary>Fornecimento "Como Está"</summary><div class="details-content"><p>O serviço é fornecido no estado em que se encontra. Qualquer declínio de saúde permanece sob a total responsabilidade e escopo pessoal do usuário.</p></div></details>
-                <h2>5. Risco Físico e Exercícios Voluntários</h2>
-                <p>Módulos sugerem distração projetada para mitigar impulsos.</p>
-                <details><summary>Indenização por Danos Físicos</summary><div class="details-content"><p>A execução de atividades físicas sugeridas ocorre por livre escolha e risco médico do próprio usuário, isentando a desenvolvedora de qualquer lesão sofrida.</p></div></details>
-                <h2>6. Conteúdo Gerado pelo Usuário (UGC)</h2>
-                <p>Cofre digital passivo para mídia e texto.</p>
-                <details><summary>Atribuição Legal</summary><div class="details-content"><p>O usuário retém 100% da propriedade legal e da responsabilidade civil por todos os conteúdos, notas e mídias registrados dentro do aplicativo.</p></div></details>
-                <h2>7. Diretrizes de Anúncios</h2>
-                <p>Modelos publicitários integrados para sustentação.</p>
-                <details><summary>Exibição e Isolamento de Dados</summary><div class="details-content"><p>A versão gratuita pode exibir anúncios fornecidos por terceiros (ex: Google AdMob). Nenhum dado sensível é compartilhado. Detalhes na <a href="https://policies.google.com/privacy" target="_blank">Política de Privacidade do Google</a>.</p></div></details>
-                <h2>8. Assinatura Premium</h2>
-                <p>Desbloqueio de funcionalidades estendidas.</p>
-                <details><summary>Pagamentos e Reembolsos</summary><div class="details-content"><p>Todo o faturamento é tratado via protocolos do Google Play Billing. Pedidos de estorno devem ser obrigatoriamente intermediados pela loja oficial.</p></div></details>
-                <h2>9. Propriedade Intelectual</h2>
-                <p>Ativos exclusivos e fechados da desenvolvedora.</p>
-                <details><summary>Salvaguardas do Código</summary><div class="details-content"><p>Qualquer tentativa de descompilar, realizar engenharia reversa ou distribuir modificações não oficiais (APKs Modificadas) resulta em revogação imediata da licença.</p></div></details>
-                <h2>10. Força Maior e Hardware</h2>
-                <p>Proteção contra falhas fora do controle de software.</p>
-                <details><summary>Exclusão de Assistência</summary><div class="details-content"><p>Restaurações de fábrica, furto ou infecções por malware apagam registros locais. A desenvolvedora está isenta de obrigações de reconstrução de dados.</p></div></details>
-                <h2>11. Limitação de Danos</h2>
-                <p>Limites econômicos em litígios financeiros.</p>
-                <details><summary>Teto Financeiro</summary><div class="details-content"><p>A responsabilidade máxima por dano comprovado fixa-se estritamente ao valor pago pelo usuário pelos serviços premium nos 60 dias anteriores ao evento.</p></div></details>
-                <h2>12. Cláusula de Divisibilidade</h2>
-                <p>Integridade estrutural perante ajustes legais.</p>
-                <details><summary>Isolamento de Disposições</summary><div class="details-content"><p>Se uma cláusula for declarada nula por um tribunal, afetará exclusivamente essa disposição. Todas as demais permanecerão operantes e válidas.</p></div></details>
-                <h2>13. Renúncia a Processos Coletivos</h2>
-                <p>Prevenção de modelos de arbitragem massiva.</p>
-                <details><summary>Resolução Individualizada</summary><div class="details-content"><p>O usuário concorda expressamente em renunciar ao direito de iniciar ou participar de qualquer ação coletiva ou arbitragem conjunta contra os desenvolvedores.</p></div></details>
-                <h2>14. Aceitação Legal Definitiva</h2>
-                <p>Confirmação irrevogável das condições de uso.</p>
-                <details><summary>Consentimento Tácito</summary><div class="details-content"><p>Avançar na interface do aplicativo serve como endosso digital formal, após o qual não serão aceitas alegações de desconhecimento dos termos.</p></div></details>
-                <h2>15. Contato e Suporte</h2>
-                <p>Comunicação direta com o suporte oficial.</p>
-                <details><summary>Canais Oficiais</summary><div class="details-content"><p>Para esclarecimentos, entre em contato exclusivamente através do e-mail de suporte fornecido na página de download da loja.</p></div></details>
-            </div>
+        <div class="section">
+            <h2>2. OFFLINE-FIRST ARCHITECTURE &amp; INFRASTRUCTURE LIMITATIONS</h2>
+            <p>Unlike standard cloud-dependent services, all interactions occur completely outside the perimeter, control, and access of the development engineering team.</p>
+            <ul class="doc-list">
+                <li><strong>Connectivity Boundaries:</strong> Local logging features function fully independently of cellular networks or internet connections, mitigating remote Man-in-the-Middle (MITM) intercept risks.</li>
+                <li><strong>Network Outbounds:</strong> External network traffic is limited strictly to managing transactions handled via Google Play Billing API and integrating local device native software layer requests.</li>
+            </ul>
         </div>
 
-        <!-- ========================================== -->
-        <!-- 3. ESPAÑOL -->
-        <!-- ========================================== -->
-        <div id="lang-es" class="lang-block">
-            <h1>Política de Privacidad y Términos Legales</h1>
-            <p class="meta">ÚLTIMA ACTUALIZACIÓN: JUNIO 2026 // REVISIÓN: 26.1</p>
-            <div class="terms-body">
-                <p>Este documento constituye un acuerdo legal vinculante que rige la arquitectura, las exenciones de responsabilidad y los términos operativos de la aplicación.</p>
-                <h2>1. Privacidad desde el Diseño y Cumplimiento Global</h2>
-                <p>La aplicación se estructura bajo estrictos principios de Privacidad desde el Diseño.</p>
-                <details><summary>Almacenamiento y Cifrado</summary><div class="details-content"><p>El sistema opera bajo una infraestructura estricta de "Conocimiento Cero". Todos los datos ingresados residen exclusivamente en la partición de hardware local interna del propio dispositivo del usuario.</p></div></details>
-                <details><summary>Monetización de Datos</summary><div class="details-content"><p>El desarrollador no recopila, replica, compila ni transmite metadatos de telemetría basados en su condición física o psicológica.</p></div></details>
-                <h2>2. Arquitectura Offline-First</h2>
-                <p>A diferencia de los servicios estándar dependientes de la nube, todas las interacciones ocurren localmente.</p>
-                <details><summary>Límites de Conectividad</summary><div class="details-content"><p>Las funciones de registro local funcionan completamente independientes de redes celulares o conexiones a Internet, mitigando riesgos de interceptación remota (ataques Man-in-the-Middle).</p></div></details>
-                <details><summary>Tráfico de Red Saliente</summary><div class="details-content"><p>El tráfico de red externo se limita estrictamente a la gestión de transacciones procesadas a través de la API de Google Play Billing y la integración de solicitudes nativas del sistema operativo del dispositivo.</p></div></details>
-                <h2>3. Acceso Local y Recuperación de Credenciales</h2>
-                <p>El mecanismo de bloqueo de seguridad localizado sirve como barrera defensiva.</p>
-                <details><summary>Ausencia de Acceso Maestro</summary><div class="details-content"><p>El software no mantiene una base de datos centralizada, "contraseñas maestras", puertas traseras administrativas ni servidores de recuperación de credenciales.</p></div></details>
-                <details><summary>Purga Irreversible de Datos</summary><div class="details-content"><p>En caso de olvido del PIN, la recuperación de datos es técnicamente imposible. La única alternativa es una reinstalación completa, lo que resulta en la eliminación inmediata y permanente de todas las bases de datos locales.</p></div></details>
-                <h2>4. Descargo de Responsabilidad Clínica</h2>
-                <p>La aplicación rechaza explícitamente cualquier utilidad clínica o terapéutica.</p>
-                <details><summary>Exclusión de Estructura Médica</summary><div class="details-content"><p>Ningún dato, métrica, sugerencia o registro contenido en este software reemplaza o constituye asesoramiento médico, apoyo psicológico, intervención psiquiátrica o protocolos de diagnóstico hospitalario.</p></div></details>
-                <details><summary>Provisión "Tal Cual"</summary><div class="details-content"><p>El servicio se proporciona en su estado actual. Cualquier deterioro de la salud, emergencia clínica o empeoramiento de síntomas queda bajo la exclusiva responsabilidad y alcance personal del usuario.</p></div></details>
-                <h2>5. Riesgo Físico y Ejercicios</h2>
-                <p>Los módulos de redirección de emergencia pueden sugerir ejercicios localizados.</p>
-                <details><summary>Indemnización por Daños Físicos</summary><div class="details-content"><p>La ejecución de actividades físicas o cardiovasculares sugeridas por la pantalla ocurre bajo la única elección y riesgo médico del usuario.</p></div></details>
-                <h2>6. Contenido Generado por el Usuario (UGC)</h2>
-                <p>La aplicación actúa como una bóveda digital pasiva y sin supervisión.</p>
-                <details><summary>Atribución Legal y Responsabilidad</summary><div class="details-content"><p>El usuario conserva el 100% de la propiedad legal y la posterior responsabilidad civil por todo el contenido, notas y medios importados o grabados dentro de la aplicación.</p></div></details>
-                <h2>7. Pautas de Publicidad y Monetización</h2>
-                <p>Para sostener el desarrollo, la aplicación incorpora modelos publicitarios.</p>
-                <details><summary>Visualización de Anuncios y Aislamiento de Datos</summary><div class="details-content"><p>La versión gratuita puede mostrar anuncios proporcionados por redes de terceros (ej. Google AdMob). Estas redes utilizan identificadores básicos del dispositivo para la entrega. No se comparten datos sensibles. Consulte la <a href="https://policies.google.com/privacy" target="_blank">Política de Privacidad de Google AdMob</a>.</p></div></details>
-                <h2>8. Suscripción Premium</h2>
-                <p>Los usuarios pueden desbloquear voluntariamente conjuntos de funciones extendidas.</p>
-                <details><summary>Ejecución de Pagos y Reembolsos</summary><div class="details-content"><p>Todo el flujo de facturación se maneja a través de Google Play Billing. Las solicitudes de reembolso deben ser mediadas a través de los canales oficiales de Google Play Store sujetos a sus directrices.</p></div></details>
-                <h2>9. Propiedad Intelectual</h2>
-                <p>El sistema representa el activo exclusivo del desarrollador.</p>
-                <details><summary>Salvaguardias del Código</summary><div class="details-content"><p>Cualquier intento de descompilar, realizar ingeniería inversa o distribuir modificaciones no oficiales ("APKs Modificadas") constituye una violación material que resulta en la revocación inmediata de la licencia.</p></div></details>
-                <h2>10. Fuerza Mayor y Hardware</h2>
-                <p>Protección contra fallas operativas fuera del control de ingeniería.</p>
-                <details><summary>Alteraciones del Dispositivo y Exclusiones</summary><div class="details-content"><p>Restablecimientos de fábrica, robo del dispositivo, corrupción del SO o malware borran permanentemente los registros locales. El desarrollador está exento de obligaciones de reconstrucción de datos.</p></div></details>
-                <h2>11. Limitación de Daños</h2>
-                <p>Límites explícitos sobre la exposición a litigios financieros.</p>
-                <details><summary>Techo Financiero</summary><div class="details-content"><p>La responsabilidad máxima por cualquier daño comprobado se fija estrictamente al monto total pagado por el usuario por servicios premium durante los 60 días inmediatamente anteriores al evento.</p></div></details>
-                <h2>12. Cláusula de Divisibilidad</h2>
-                <p>Preservación de la integridad estructural del marco legal.</p>
-                <details><summary>Aislamiento de Disposiciones</summary><div class="details-content"><p>Si alguna sección es declarada nula por un tribunal, afecta exclusivamente a esa disposición aislada. Todas las demás cláusulas permanecen operativas y válidas.</p></div></details>
-                <h2>13. Renuncia a Acciones Colectivas</h2>
-                <p>La resolución de litigios se limita estrictamente al ámbito individual.</p>
-                <details><summary>Resolución Individualizada</summary><div class="details-content"><p>El usuario acepta expresamente renunciar al derecho de iniciar, unirse o participar en cualquier acción colectiva, litigio grupal o arbitraje conjunto contra los desarrolladores.</p></div></details>
-                <h2>14. Aceptación Legal Definitiva</h2>
-                <p>Confirmación de términos establecidos al utilizar.</p>
-                <details><summary>Consentimiento Tácito</summary><div class="details-content"><p>Avanzar en la interfaz de la aplicación sirve como respaldo digital formal, después del cual no se aceptarán reclamos de ignorancia de los términos.</p></div></details>
-                <h2>15. Contacto y Soporte</h2>
-                <p>Canales para comunicación administrativa.</p>
-                <details><summary>Canales Oficiales</summary><div class="details-content"><p>Para aclaraciones o soporte, contacte exclusivamente a través del correo electrónico de soporte oficial proporcionado en la página de descarga de la aplicación en la tienda.</p></div></details>
-            </div>
+        <div class="section">
+            <h2>3. LOCAL ACCESS RESTRICTIONS &amp; CREDENTIAL RECOVERY</h2>
+            <p>The localized security locking mechanism serves as an absolute defensive barrier against unauthorized access.</p>
+            <ul class="doc-list">
+                <li><strong>Absence of Master Access:</strong> The software does not maintain a centralized database, "super passwords", administrative backdoors, or credential recovery servers.</li>
+                <li><strong>Irreversible Data Purge:</strong> In the event of a forgotten PIN, data recovery is technically impossible. The only alternative is a complete reinstallation, resulting in the immediate and permanent deletion of all local databases.</li>
+            </ul>
         </div>
 
-        <!-- ========================================== -->
-        <!-- 4. ITALIANO -->
-        <!-- ========================================== -->
-        <div id="lang-it" class="lang-block">
-            <h1>Informativa sulla Privacy e Termini Legali</h1>
-            <p class="meta">ULTIMO AGGIORNAMENTO: GIUGNO 2026 // REVISIONE: 26.1</p>
-            <div class="terms-body">
-                <p>Questo documento costituisce un accordo legale vincolante che regola l'architettura, le esenzioni di responsabilità e i termini operativi dell'applicazione.</p>
-                <h2>1. Privacy by Design e Conformità Globale</h2>
-                <p>L'applicazione è strutturata secondo rigorosi principi di Privacy by Design.</p>
-                <details><summary>Archiviazione e Crittografia</summary><div class="details-content"><p>Il sistema opera sotto una rigorosa infrastruttura "Zero-Knowledge". Tutti i dati inseriti risiedono esclusivamente nella partizione hardware locale interna del dispositivo dell'utente.</p></div></details>
-                <details><summary>Monetizzazione dei Dati</summary><div class="details-content"><p>Lo sviluppatore non raccoglie, replica, compila né trasmette metadati di telemetria basati sulle condizioni fisiche o psicologiche dell'utente.</p></div></details>
-                <h2>2. Architettura Offline-First</h2>
-                <p>A differenza dei servizi standard dipendenti dal cloud, tutte le interazioni avvengono localmente.</p>
-                <details><summary>Limiti di Connettività</summary><div class="details-content"><p>Le funzionalità di registrazione locale funzionano completamente indipendentemente dalle reti cellulari o dalle connessioni Internet, mitigando i rischi di intercettazione remota (attacchi Man-in-the-Middle).</p></div></details>
-                <details><summary>Traffico di Rete in Uscita</summary><div class="details-content"><p>Il traffico di rete esterno è strettamente limitato alla gestione delle transazioni elaborate tramite l'API Google Play Billing e l'integrazione delle richieste native del sistema operativo del dispositivo.</p></div></details>
-                <h2>3. Accesso Locale e Recupero Credenziali</h2>
-                <p>Il meccanismo di blocco della sicurezza localizzato funge da barriera difensiva.</p>
-                <details><summary>Assenza di Accesso Principale</summary><div class="details-content"><p>Il software non mantiene un database centralizzato, "super password", backdoor amministrative o server di recupero delle credenziali.</p></div></details>
-                <details><summary>Cancellazione Irreversibile dei Dati</summary><div class="details-content"><p>In caso di dimenticanza del PIN, il recupero dei dati è tecnicamente impossibile. L'unica alternativa è una reinstallazione completa, con conseguente eliminazione immediata e permanente di tutti i database locali.</p></div></details>
-                <h2>4. Esenzione di Responsabilità Clinica</h2>
-                <p>L'applicazione rifiuta esplicitamente qualsiasi utilità clinica o terapeutica.</p>
-                <details><summary>Esclusione Struttura Medica</summary><div class="details-content"><p>Nessun dato, metrica, suggerimento o registro contenuto in questo software sostituisce o costituisce consulenza medica, supporto psicologico, intervento psichiatrico o protocolli diagnostici ospedalieri.</p></div></details>
-                <details><summary>Fornitura "Così Com'è"</summary><div class="details-content"><p>Il servizio è fornito nello stato in cui si trova. Qualsiasi peggioramento della salute, emergenza clinica o aggravamento dei sintomi rimane sotto la sola responsabilità e ambito personale dell'utente.</p></div></details>
-                <h2>5. Rischio Fisico ed Esercizi</h2>
-                <p>I moduli di reindirizzamento di emergenza possono suggerire esercizi localizzati.</p>
-                <details><summary>Indennizzo per Danni Fisici</summary><div class="details-content"><p>L'esecuzione di attività fisiche o cardiovascolari suggerite dallo schermo avviene a esclusiva scelta e rischio medico dell'utente.</p></div></details>
-                <h2>6. Contenuti Generati dall'Utente (UGC)</h2>
-                <p>L'applicazione agisce come una cassaforte digitale passiva e non monitorata.</p>
-                <details><summary>Attribuzione Legale e Responsabilità</summary><div class="details-content"><p>L'utente conserva il 100% della proprietà legale e la successiva responsabilità civile per tutti i contenuti, note e media importati o registrati all'interno dell'applicazione.</p></div></details>
-                <h2>7. Linee Guida Pubblicitarie e Monetizzazione</h2>
-                <p>Per sostenere lo sviluppo, l'applicazione incorpora modelli pubblicitari.</p>
-                <details><summary>Visualizzazione Annunci e Isolamento Dati</summary><div class="details-content"><p>La versione gratuita può mostrare annunci forniti da reti di terze parti (es. Google AdMob). Queste reti utilizzano identificatori di dispositivo di base per la consegna. Nessun dato sensibile viene condiviso. Vedi la <a href="https://policies.google.com/privacy" target="_blank">Informativa sulla Privacy di Google AdMob</a>.</p></div></details>
-                <h2>8. Abbonamento Premium</h2>
-                <p>Gli utenti possono sbloccare volontariamente set di funzionalità estese.</p>
-                <details><summary>Esecuzione Pagamenti e Rimborsi</summary><div class="details-content"><p>L'intero flusso di fatturazione è gestito tramite Google Play Billing. Le richieste di rimborso devono essere mediate attraverso i canali ufficiali di Google Play Store soggetti alle loro linee guida.</p></div></details>
-                <h2>9. Proprietà Intellettuale</h2>
-                <p>Il sistema rappresenta l'asset esclusivo dello sviluppatore.</p>
-                <details><summary>Tutele del Codice</summary><div class="details-content"><p>Qualsiasi tentativo di decompilare, fare ingegneria inversa o distribuire modifiche non ufficiali ("APK Modificate") costituisce una violazione materiale che comporta la revoca immediata della licenza.</p></div></details>
-                <h2>10. Forza Maggiore e Hardware</h2>
-                <p>Protezione contro guasti operativi fuori dal controllo ingegneristico.</p>
-                <details><summary>Alterazioni del Dispositivo ed Esclusioni</summary><div class="details-content"><p>Ripristini ai dati di fabbrica, furto del dispositivo, corruzione del SO o malware cancellano permanentemente i registri locali. Lo sviluppatore è esente da obblighi di ricostruzione dei dati.</p></div></details>
-                <h2>11. Limitazione dei Danni</h2>
-                <p>Limiti espliciti sull'esposizione a contenziosi finanziari.</p>
-                <details><summary>Soffitto Finanziario</summary><div class="details-content"><p>La responsabilità massima per qualsiasi danno provato è fissata rigorosamente all'importo totale pagato dall'utente per i servizi premium durante i 60 giorni immediatamente precedenti l'evento.</p></div></details>
-                <h2>12. Clausola di Separabilità</h2>
-                <p>Preservazione dell'integrità strutturale del quadro giuridico.</p>
-                <details><summary>Isolamento delle Disposizioni</summary><div class="details-content"><p>Se una sezione viene dichiarata nulla da un tribunale, ciò riguarda esclusivamente quella disposizione isolata. Tutte le altre clausole rimangono operative e valide.</p></div></details>
-                <h2>13. Rinuncia alle Azioni Collettive</h2>
-                <p>La risoluzione delle controversie è strettamente limitata all'ambito individuale.</p>
-                <details><summary>Risoluzione Individualizzata</summary><div class="details-content"><p>L'utente accetta espressamente di rinunciare al diritto di avviare, aderire o partecipare a qualsiasi azione collettiva, contenzioso di gruppo o arbitrato congiunto contro gli sviluppatori.</p></div></details>
-                <h2>14. Accettazione Legale Definitiva</h2>
-                <p>Conferma dei termini stabiliti all'utilizzo.</p>
-                <details><summary>Consenso Tacito</summary><div class="details-content"><p>Avanzare nell'interfaccia dell'applicazione serve come approvazione digitale formale, dopo la quale non saranno accettate rivendicazioni di ignoranza dei termini.</p></div></details>
-                <h2>15. Contatto e Supporto</h2>
-                <p>Canali per la comunicazione amministrativa.</p>
-                <details><summary>Canali Ufficiali</summary><div class="details-content"><p>Per chiarimenti o supporto, contattare esclusivamente tramite l'email di supporto ufficiale fornita nella pagina di download dell'applicazione sullo store.</p></div></details>
-            </div>
+        <div class="section">
+            <h2>4. CLINICAL DISCLAIMER &amp; MEDICAL EXCLUSION</h2>
+            <p>The application explicitly disclaims any clinical, therapeutic, or diagnostic utility whatsoever.</p>
+            <ul class="doc-list">
+                <li><strong>Medical Structure Exclusion:</strong> No data, metrics, suggestions, or logs contained within this software replace or constitute medical advice, psychological support, psychiatric intervention, or hospital diagnostic protocols.</li>
+                <li><strong>"As-Is" Provision:</strong> The service is provided in its current state without warranty of any kind. Any health decline, clinical emergency, or worsening of symptoms remains under the sole responsibility and personal scope of the user.</li>
+            </ul>
         </div>
 
-        <!-- ========================================== -->
-        <!-- 5. FRANÇAIS -->
-        <!-- ========================================== -->
-        <div id="lang-fr" class="lang-block">
-            <h1>Politique de Confidentialité et Conditions Légales</h1>
-            <p class="meta">DERNIÈRE MISE À JOUR : JUIN 2026 // RÉVISION : 26.1</p>
-            <div class="terms-body">
-                <p>Ce document constitue un accord juridique contraignant régissant l'architecture, les clauses de non-responsabilité et les conditions opérationnelles de l'application.</p>
-                <h2>1. Confidentialité dès la Conception et Conformité Mondiale</h2>
-                <p>L'application est structurée selon des principes stricts de Confidentialité dès la Conception.</p>
-                <details><summary>Stockage et Chiffrement</summary><div class="details-content"><p>Le système fonctionne sous une infrastructure stricte de "Zéro Connaissance". Toutes les données saisies résident exclusivement dans la partition matérielle locale interne de l'appareil de l'utilisateur.</p></div></details>
-                <details><summary>Monétisation des Données</summary><div class="details-content"><p>Le développeur ne collecte, ne réplique, ne compile ni ne transmet de métadonnées de télémétrie basées sur votre condition physique ou psychologique.</p></div></details>
-                <h2>2. Architecture Hors-Ligne Prioritaire</h2>
-                <p>Contrairement aux services standards dépendants du cloud, toutes les interactions se produisent localement.</p>
-                <details><summary>Limites de Connectivité</summary><div class="details-content"><p>Les fonctionnalités d'enregistrement local fonctionnent complètement indépendamment des réseaux cellulaires ou des connexions Internet, atténuant les risques d'interception à distance (attaques de l'homme du milieu).</p></div></details>
-                <details><summary>Trafic Réseau Sortant</summary><div class="details-content"><p>Le trafic réseau externe est strictement limité à la gestion des transactions traitées via l'API Google Play Billing et l'intégration des requêtes natives du système d'exploitation de l'appareil.</p></div></details>
-                <h2>3. Accès Local et Récupération des Identifiants</h2>
-                <p>Le mécanisme de verrouillage de sécurité localisé sert de barrière défensive.</p>
-                <details><summary>Absence d'Accès Principal</summary><div class="details-content"><p>Le logiciel ne maintient pas de base de données centralisée, de "super mots de passe", de portes dérobées administratives ou de serveurs de récupération d'identifiants.</p></div></details>
-                <details><summary>Purge Irréversible des Données</summary><div class="details-content"><p>En cas d'oubli du code PIN, la récupération des données est techniquement impossible. La seule alternative est une réinstallation complète, entraînant la suppression immédiate et permanente de toutes les bases de données locales.</p></div></details>
-                <h2>4. Clause de Non-Responsabilité Clinique</h2>
-                <p>L'application décline explicitement toute utilité clinique ou thérapeutique.</p>
-                <details><summary>Exclusion de Structure Médicale</summary><div class="details-content"><p>Aucune donnée, métrique, suggestion ou journal contenu dans ce logiciel ne remplace ou ne constitue un avis médical, un soutien psychologique, une intervention psychiatrique ou des protocoles de diagnostic hospitalier.</p></div></details>
-                <details><summary>Fourniture "Tel Quel"</summary><div class="details-content"><p>Le service est fourni dans son état actuel. Toute détérioration de la santé, urgence clinique ou aggravation des symptômes reste sous la seule responsabilité et portée personnelle de l'utilisateur.</p></div></details>
-                <h2>5. Risque Physique et Exercices</h2>
-                <p>Les modules de redirection d'urgence peuvent suggérer des exercices localisés.</p>
-                <details><summary>Indemnisation pour Dommages Physiques</summary><div class="details-content"><p>L'exécution d'activités physiques ou cardiovasculaires suggérées par l'écran se fait au seul choix et risque médical de l'utilisateur.</p></div></details>
-                <h2>6. Contenu Généré par l'Utilisateur (CGU)</h2>
-                <p>L'application agit comme un coffre-fort numérique passif et non surveillé.</p>
-                <details><summary>Attribution Légale et Responsabilité</summary><div class="details-content"><p>L'utilisateur conserve 100 % de la propriété légale et la responsabilité civile subséquente pour tout contenu, note et média importé ou enregistré dans l'application.</p></div></details>
-                <h2>7. Directives Publicitaires et Monétisation</h2>
-                <p>Pour soutenir le développement, l'application intègre des modèles publicitaires.</p>
-                <details><summary>Affichage des Publicités et Isolement des Données</summary><div class="details-content"><p>La version gratuite peut afficher des publicités fournies par des réseaux tiers (ex. Google AdMob). Ces réseaux utilisent des identifiants de base de l'appareil pour la diffusion. Aucune donnée sensible n'est partagée. Voir la <a href="https://policies.google.com/privacy" target="_blank">Politique de Confidentialité de Google AdMob</a>.</p></div></details>
-                <h2>8. Abonnement Premium</h2>
-                <p>Les utilisateurs peuvent volontairement débloquer des ensembles de fonctionnalités étendus.</p>
-                <details><summary>Exécution des Paiements et Remboursements</summary><div class="details-content"><p>L'ensemble du flux de facturation est géré via Google Play Billing. Les demandes de remboursement doivent être médiées par les canaux officiels de Google Play Store soumis à leurs directives.</p></div></details>
-                <h2>9. Propriété Intellectuelle</h2>
-                <p>Le système représente l'actif exclusif du développeur.</p>
-                <details><summary>Sauvegardes du Code</summary><div class="details-content"><p>Toute tentative de décompiler, de faire de l'ingénierie inverse ou de distribuer des modifications non officielles ("APK Modifiés") constitue une violation matérielle entraînant la révocation immédiate de la licence.</p></div></details>
-                <h2>10. Force Majeure et Matériel</h2>
-                <p>Protection contre les défaillances opérationnelles hors contrôle technique.</p>
-                <details><summary>Altérations de l'Appareil et Exclusions</summary><div class="details-content"><p>Les réinitialisations d'usine, le vol de l'appareil, la corruption de l'OS ou les logiciels malveillants effacent définitivement les enregistrements locaux. Le développeur est exonéré des obligations de reconstruction des données.</p></div></details>
-                <h2>11. Limitation des Dommages</h2>
-                <p>Limites explicites sur l'exposition aux litiges financiers.</p>
-                <details><summary>Plafond Financier</summary><div class="details-content"><p>La responsabilité maximale pour tout dommage prouvé est strictement fixée au montant total payé par l'utilisateur pour les services premium pendant les 60 jours précédant immédiatement l'événement.</p></div></details>
-                <h2>12. Clause de Divisibilité</h2>
-                <p>Préservation de l'intégrité structurelle du cadre juridique.</p>
-                <details><summary>Isolement des Dispositions</summary><div class="details-content"><p>Si une section est déclarée nulle par un tribunal, cela affecte exclusivement cette disposition isolée. Toutes les autres clauses restent opérationnelles et valides.</p></div></details>
-                <h2>13. Renonciation aux Actions Collectives</h2>
-                <p>La résolution des litiges est strictement limitée au cadre individuel.</p>
-                <details><summary>Résolution Individualisée</summary><div class="details-content"><p>L'utilisateur accepte expressément de renoncer au droit d'intenter, de rejoindre ou de participer à toute action collective, litige de groupe ou arbitrage conjoint contre les développeurs.</p></div></details>
-                <h2>14. Acceptation Légale Définitive</h2>
-                <p>Confirmation des termes établis lors de l'utilisation.</p>
-                <details><summary>Consentement Tacite</summary><div class="details-content"><p>Avancer dans l'interface de l'application sert d'approbation numérique formelle, après quoi les réclamations d'ignorance des termes ne seront pas acceptées.</p></div></details>
-                <h2>15. Contact et Support</h2>
-                <p>Canaux pour la communication administrative.</p>
-                <details><summary>Canaux Officiels</summary><div class="details-content"><p>Pour des éclaircissements ou du support, contactez exclusivement via l'e-mail de support officiel fourni sur la page de téléchargement de l'application sur le magasin.</p></div></details>
-            </div>
+        <div class="section">
+            <h2>5. PHYSICAL RISK &amp; VOLUNTARY EXERCISES</h2>
+            <p>Emergency redirection modules may suggest localized physical exercises as a distraction technique.</p>
+            <ul class="doc-list">
+                <li><strong>Physical Damage Indemnification:</strong> The execution of physical or cardiovascular activities suggested by the screen occurs at the sole choice and medical risk of the user. The developer assumes no liability for injuries sustained.</li>
+            </ul>
         </div>
 
-        <!-- ========================================== -->
-        <!-- 6. DEUTSCH -->
-        <!-- ========================================== -->
-        <div id="lang-de" class="lang-block">
-            <h1>Datenschutzrichtlinie und Rechtliche Bedingungen</h1>
-            <p class="meta">LETZTE AKTUALISIERUNG: JUNI 2026 // REVISION: 26.1</p>
-            <div class="terms-body">
-                <p>Dieses Dokument stellt eine verbindliche rechtliche Vereinbarung dar, die die Architektur, Haftungsausschlüsse und Betriebsbedingungen der Anwendung regelt.</p>
-                <h2>1. Datenschutz durch Technikgestaltung und Globale Konformität</h2>
-                <p>Die Anwendung ist nach strengen Prinzipien des Datenschutzes durch Technikgestaltung strukturiert.</p>
-                <details><summary>Speicherung und Verschlüsselung</summary><div class="details-content"><p>Das System arbeitet unter einer strengen "Zero-Knowledge"-Infrastruktur. Alle vom Benutzer eingegebenen Daten befinden sich ausschließlich in der lokalen internen Hardware-Partition des eigenen Geräts des Benutzers.</p></div></details>
-                <details><summary>Datenmonetarisierung</summary><div class="details-content"><p>Der Entwickler sammelt, spiegelt, kompiliert oder überträgt keine Telemetrie-Metadaten, die auf Ihrem physischen oder psychologischen Zustand basieren.</p></div></details>
-                <h2>2. Offline-First-Architektur</h2>
-                <p>Im Gegensatz zu Standard-Cloud-abhängigen Diensten finden alle Interaktionen lokal statt.</p>
-                <details><summary>Konnektivitätsgrenzen</summary><div class="details-content"><p>Lokale Protokollierungsfunktionen funktionieren vollständig unabhängig von Mobilfunknetzen oder Internetverbindungen und mindern Risiken einer Fernabfangung (Man-in-the-Middle-Angriffe).</p></div></details>
-                <details><summary>Ausgehender Netzwerkverkehr</summary><div class="details-content"><p>Externer Netzwerkverkehr ist streng auf die Transaktionsverwaltung beschränkt, die über die Google Play Billing API und die Integration nativer Betriebssystemanforderungen des Geräts verarbeitet wird.</p></div></details>
-                <h2>3. Lokaler Zugriff und Wiederherstellung von Anmeldedaten</h2>
-                <p>Der lokalisierte Sicherheitsverriegelungsmechanismus dient als defensive Barriere.</p>
-                <details><summary>Fehlen eines Master-Zugriffs</summary><div class="details-content"><p>Die Software verwaltet keine zentrale Datenbank, "Super-Passwörter", administrative Hintertüren oder Server zur Wiederherstellung von Anmeldedaten.</p></div></details>
-                <details><summary>Irreversible Datenlöschung</summary><div class="details-content"><p>Im Falle einer vergessenen PIN ist die Datenwiederherstellung technisch unmöglich. Die einzige Alternative ist eine vollständige Neuinstallation, was zur sofortigen und dauerhaften Löschung aller lokalen Datenbanken führt.</p></div></details>
-                <h2>4. Klinischer Haftungsausschluss</h2>
-                <p>Die Anwendung lehnt ausdrücklich jeden klinischen oder therapeutischen Nutzen ab.</p>
-                <details><summary>Ausschluss medizinischer Struktur</summary><div class="details-content"><p>Keine Daten, Metriken, Vorschläge oder Protokolle in dieser Software ersetzen oder stellen medizinische Beratung, psychologische Unterstützung, psychiatrische Intervention oder Krankenhaus-Diagnoseprotokolle dar.</p></div></details>
-                <details><summary>Bereitstellung "Wie Besehen"</summary><div class="details-content"><p>Der Dienst wird in seinem aktuellen Zustand bereitgestellt. Jeder Gesundheitsrückgang, klinische Notfall oder jede Verschlechterung der Symptome liegt in der alleinigen Verantwortung und im persönlichen Bereich des Benutzers.</p></div></details>
-                <h2>5. Körperliches Risiko und Übungen</h2>
-                <p>Notfall-Umleitungsmodule können lokale Übungen vorschlagen.</p>
-                <details><summary>Entschädigung für körperliche Schäden</summary><div class="details-content"><p>Die Ausführung von körperlichen oder kardiovaskulären Aktivitäten, die vom Bildschirm vorgeschlagen werden, erfolgt nach alleiniger Wahl und auf eigenes medizinisches Risiko des Benutzers.</p></div></details>
-                <h2>6. Vom Benutzer erstellte Inhalte (UGC)</h2>
-                <p>Die Anwendung fungiert als passiver, nicht überwachter digitaler Tresor.</p>
-                <details><summary>Rechtliche Zuschreibung und Haftung</summary><div class="details-content"><p>Der Benutzer behält 100 % des rechtlichen Eigentums und die anschließende zivilrechtliche Haftung für alle Inhalte, Notizen und Medien, die innerhalb der Anwendung importiert oder aufgezeichnet wurden.</p></div></details>
-                <h2>7. Werberichtlinien und Monetarisierung</h2>
-                <p>Zur Aufrechterhaltung der Entwicklung integriert die Anwendung Werbemodelle.</p>
-                <details><summary>Anzeigenanzeige und Datenisolierung</summary><div class="details-content"><p>Die kostenlose Version kann Anzeigen anzeigen, die von Drittanbieter-Netzwerken (z. B. Google AdMob) bereitgestellt werden. Diese Netzwerke verwenden grundlegende Geräteidentifikatoren für die Zustellung. Keine sensiblen Daten werden geteilt. Siehe die <a href="https://policies.google.com/privacy" target="_blank">Datenschutzrichtlinie von Google AdMob</a>.</p></div></details>
-                <h2>8. Premium-Abonnement</h2>
-                <p>Benutzer können erweiterte Funktionssets freiwillig freischalten.</p>
-                <details><summary>Zahlungsabwicklung und Rückerstattungen</summary><div class="details-content"><p>Der gesamte Abrechnungsfluss wird über Google Play Billing abgewickelt. Rückerstattungsanfragen müssen über offizielle Google Play Store-Kanäle vermittelt werden, die deren Richtlinien unterliegen.</p></div></details>
-                <h2>9. Geistiges Eigentum</h2>
-                <p>Das System stellt das ausschließliche Asset des Entwicklers dar.</p>
-                <details><summary>Code-Schutzmaßnahmen</summary><div class="details-content"><p>Jeder Versuch, den Code zu dekompilieren, Reverse Engineering zu betreiben oder inoffizielle Modifikationen ("Modifizierte APKs") zu verbreiten, stellt einen materiellen Verstoß dar, der zur sofortigen Lizenzwiderrufung führt.</p></div></details>
-                <h2>10. Höhere Gewalt und Hardware</h2>
-                <p>Schutz vor Betriebsausfällen außerhalb der technischen Kontrolle.</p>
-                <details><summary>Geräteänderungen und Ausschlüsse</summary><div class="details-content"><p>Werksreset, Gerätediebstahl, OS-Korruption oder Malware löschen lokale Aufzeichnungen dauerhaft. Der Entwickler ist von Verpflichtungen zur Datenrekonstruktion befreit.</p></div></details>
-                <h2>11. Schadensbegrenzung</h2>
-                <p>Explizite Grenzen für die Exposition gegenüber finanziellen Rechtsstreitigkeiten.</p>
-                <details><summary>Finanzielle Obergrenze</summary><div class="details-content"><p>Die maximale Haftung für jeden nachgewiesenen Schaden ist strikt auf den Gesamtbetrag festgelegt, den der Benutzer während der 60 Tage unmittelbar vor dem Ereignis für Premium-Dienste gezahlt hat.</p></div></details>
-                <h2>12. Salvatorische Klausel</h2>
-                <p>Erhaltung der strukturellen Integrität des rechtlichen Rahmens.</p>
-                <details><summary>Isolierung von Bestimmungen</summary><div class="details-content"><p>Wenn ein Abschnitt von einem Gericht für nichtig erklärt wird, betrifft dies ausschließlich diese isolierte Bestimmung. Alle anderen Klauseln bleiben betriebsbereit und gültig.</p></div></details>
-                <h2>13. Verzicht auf Sammelklagen</h2>
-                <p>Die Beilegung von Rechtsstreitigkeiten ist streng auf den individuellen Rahmen beschränkt.</p>
-                <details><summary>Individualisierte Lösung</summary><div class="details-content"><p>Der Benutzer stimmt ausdrücklich zu, auf das Recht zu verzichten, eine Sammelklage, Gruppenklage oder gemeinsame Schiedsgerichtsbarkeit gegen die Entwickler einzuleiten, sich anzuschließen oder daran teilzunehmen.</p></div></details>
-                <h2>14. Endgültige rechtliche Akzeptanz</h2>
-                <p>Bestätigung der bei der Nutzung festgelegten Bedingungen.</p>
-                <details><summary>Stillschweigende Zustimmung</summary><div class="details-content"><p>Das Fortschreiten in der Anwendungsbenutzeroberfläche dient als formale digitale Zustimmung, wonach Ansprüche auf Unkenntnis der Bedingungen nicht akzeptiert werden.</p></div></details>
-                <h2>15. Kontakt und Support</h2>
-                <p>Kanäle für administrative Kommunikation.</p>
-                <details><summary>Offizielle Kanäle</summary><div class="details-content"><p>Für Klarstellungen oder Support kontaktieren Sie ausschließlich über die offizielle Support-E-Mail, die auf der Download-Seite der Anwendung im Store angegeben ist.</p></div></details>
-            </div>
+        <div class="section">
+            <h2>6. USER-GENERATED CONTENT (UGC)</h2>
+            <p>The application acts as a passive, unmonitored digital vault for user-created material.</p>
+            <ul class="doc-list">
+                <li><strong>Legal Attribution &amp; Liability:</strong> The user retains 100% legal ownership and subsequent civil liability for all content, notes, and media imported or recorded within the application.</li>
+            </ul>
         </div>
 
-        <!-- ========================================== -->
-        <!-- 7. 日本語 -->
-        <!-- ========================================== -->
-        <div id="lang-ja" class="lang-block">
-            <h1>プライバシーポリシーおよび法的条件</h1>
-            <p class="meta">最終更新日：2026年6月 // リビジョン：26.1</p>
-            <div class="terms-body">
-                <p>本ドキュメントは、アプリケーションのアーキテクチャ、免責事項、および運用条件を規定する拘束力のある法的合意を構成します。</p>
-                <h2>1. プライバシーバイデザインとグローバルコンプライアンス</h2>
-                <p>アプリケーションは厳格なプライバシーバイデザインの原則に基づいて構築されています。</p>
-                <details><summary>ストレージと暗号化</summary><div class="details-content"><p>システムは厳格な「ゼロ知識」インフラストラクチャの下で動作します。ユーザーが入力したすべてのデータは、ユーザー自身のデバイスのローカル内部ハードウェアパーティション内にのみ存在します。</p></div></details>
-                <details><summary>データの収益化</summary><div class="details-content"><p>開発者は、ユーザーの身体的または心理的状态に基づくテレメトリメタデータを収集、複製、コンパイル、または送信しません。</p></div></details>
-                <h2>2. オフラインファーストアーキテクチャ</h2>
-                <p>標準的なクラウド依存サービスとは異なり、すべてのインタラクションはローカルで行われます。</p>
-                <details><summary>接続性の境界</summary><div class="details-content"><p>ローカルログ機能は、携帯電話ネットワークやインターネット接続から完全に独立して機能し、リモート傍受リスク（中間者攻撃）を軽減します。</p></div></details>
-                <details><summary>アウトバウンドネットワークトラフィック</summary><div class="details-content"><p>外部ネットワークトラフィックは、Google Play Billing APIを通じて処理されるトランザクション管理およびデバイスのネイティブオペレーティングシステムリクエストの統合に厳密に制限されます。</p></div></details>
-                <h2>3. ローカルアクセスと認証情報の回復</h2>
-                <p>ローカライズされたセキュリティロック機構は防御障壁として機能します。</p>
-                <details><summary>マスターアクセスの欠如</summary><div class="details-content"><p>ソフトウェアは、集中データベース、「スーパーパスワード」、管理者バックドア、または認証情報回復サーバーを維持しません。</p></div></details>
-                <details><summary>不可逆的なデータ消去</summary><div class="details-content"><p>PINを忘れた場合、データの回復は技術的に不可能です。唯一の代替手段は完全な再インストールであり、これによりすべてのローカルデータベースが即座に永久に削除されます。</p></div></details>
-                <h2>4. 臨床的免責事項</h2>
-                <p>アプリケーションは、臨床的または治療的な有用性を明示的に否認します。</p>
-                <details><summary>医療構造の除外</summary><div class="details-content"><p>このソフトウェアに含まれるデータ、指標、提案、またはログは、医療アドバイス、心理的サポート、精神医学的介入、または病院診断プロトコルに代わるものでも、それらを構成するものでもありません。</p></div></details>
-                <details><summary>「現状有姿」での提供</summary><div class="details-content"><p>サービスは現在の状態で提供されます。健康状態の悪化、臨床的緊急事態、または症状の悪化は、ユーザーの単独の責任および個人的範囲内に留まります。</p></div></details>
-                <h2>5. 身体的リスクと運動</h2>
-                <p>緊急リダイレクトモジュールは局所的な運動を提案する場合があります。</p>
-                <details><summary>身体的損害の補償</summary><div class="details-content"><p>画面によって提案される身体活動または心血管活動の実行は、ユーザーの単独の選択および医療リスクにおいて行われます。</p></div></details>
-                <h2>6. ユーザー生成コンテンツ（UGC）</h2>
-                <p>アプリケーションは受動的で監視されていないデジタル金庫として機能します。</p>
-                <details><summary>法的帰属と責任</summary><div class="details-content"><p>ユーザーは、アプリケーション内でインポートまたは記録されたすべてのコンテンツ、メモ、およびメディアに対する100％の法的所有権およびその後の民事責任を保持します。</p></div></details>
-                <h2>7. 広告ガイドラインと収益化</h2>
-                <p>開発を維持するために、アプリケーションは広告モデルを組み込んでいます。</p>
-                <details><summary>広告表示とデータ分離</summary><div class="details-content"><p>無料版には、サードパーティネットワーク（例：Google AdMob）が提供する広告が表示される場合があります。これらのネットワークは配信のために基本的なデバイス識別子を使用します。機密データは共有されません。<a href="https://policies.google.com/privacy" target="_blank">Google AdMobプライバシーポリシー</a>をご覧ください。</p></div></details>
-                <h2>8. プレミアムサブスクリプション</h2>
-                <p>ユーザーは任意で拡張機能セットをアンロックできます。</p>
-                <details><summary>支払い実行と払い戻し</summary><div class="details-content"><p>すべての請求フローはGoogle Play Billingを通じて処理されます。払い戻しのリクエストは、そのガイドラインに従う公式Google Play Storeチャネルを通じて仲介される必要があります。</p></div></details>
-                <h2>9. 知的財産</h2>
-                <p>システムは開発者の独占資産を表します。</p>
-                <details><summary>コード保護</summary><div class="details-content"><p>逆コンパイル、リバースエンジニアリング、または非公式な修正（「改造APK」）を配布しようとする試みは、即時のライセンス取り消しにつながる重大な違反を構成します。</p></div></details>
-                <h2>10. 不可抗力とハードウェア</h2>
-                <p>エンジニアリング制御外の運用障害からの保護。</p>
-                <details><summary>デバイスの変更と除外</summary><div class="details-content"><p>工場出荷時の設定へのリセット、デバイスの盗難、OSの破損、またはマルウェアはローカルレコードを永久に消去します。開発者はデータ再構築の義務から免除されます。</p></div></details>
-                <h2>11. 損害の制限</h2>
-                <p>財務訴訟への露出に関する明示的な制限。</p>
-                <details><summary>財務上限</summary><div class="details-content"><p>証明された損害に対する最大責任は、イベントの直前60日間にユーザーがプレミアムサービスに対して支払った合計金額に厳密に固定されます。</p></div></details>
-                <h2>12. 分離可能性条項</h2>
-                <p>法的枠組みの構造的完全性の保全。</p>
-                <details><summary>規定の分離</summary><div class="details-content"><p>セクションが裁判所によって無効であると宣言された場合、それはその孤立した規定にのみ影響します。他のすべての条項は稼働中で有効のままです。</p></div></details>
-                <h2>13. クラスアクション放棄</h2>
-                <p>訴訟解決は厳密に個別の範囲に限定されます。</p>
-                <details><summary>個別化された解決</summary><div class="details-content"><p>ユーザーは、開発者に対してクラスアクション、グループ訴訟、または共同仲裁を開始、参加、または関与する権利を放棄することに明示的に同意します。</p></div></details>
-                <h2>14. 最終的な法的承認</h2>
-                <p>使用時に確立された条件の確認。</p>
-                <details><summary>黙示の同意</summary><div class="details-content"><p>アプリケーションインターフェースを進むことは正式なデジタル承認として機能し、その後、条件の無知の主張は受け入れられません。</p></div></details>
-                <h2>15. お問い合わせとサポート</h2>
-                <p>管理通信のためのチャネル。</p>
-                <details><summary>公式チャネル</summary><div class="details-content"><p>説明やサポートについては、ストアのアプリケーションダウンロードページに記載されている公式サポートメールを介してのみお問い合わせください。</p></div></details>
-            </div>
+        <div class="section">
+            <h2>7. AD GUIDELINES &amp; MONETIZATION MODEL</h2>
+            <p>To sustain ongoing development, the application incorporates third-party advertising models.</p>
+            <ul class="doc-list">
+                <li><strong>Ad Display &amp; Data Isolation:</strong> The free version may display ads provided by third-party networks (e.g., Google AdMob). These networks use basic device identifiers for delivery. No sensitive data is shared. See the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google AdMob Privacy Policy</a>.</li>
+            </ul>
         </div>
 
-        <!-- ========================================== -->
-        <!-- 8. РУССКИЙ -->
-        <!-- ========================================== -->
-        <div id="lang-ru" class="lang-block">
-            <h1>Политика конфиденциальности и Юридические условия</h1>
-            <p class="meta">ПОСЛЕДНЕЕ ОБНОВЛЕНИЕ: ИЮНЬ 2026 // РЕВИЗИЯ: 26.1</p>
-            <div class="terms-body">
-                <p>Этот документ представляет собой юридически обязывающее соглашение, регулирующее архитектуру, отказы от ответственности и условия эксплуатации приложения.</p>
-                <h2>1. Конфиденциальность по дизайну и Глобальное соответствие</h2>
-                <p>Приложение структурировано в соответствии со строгими принципами конфиденциальности по дизайну.</p>
-                <details><summary>Хранение и шифрование</summary><div class="details-content"><p>Система работает под строгой инфраструктурой «Нулевого знания». Все введенные пользователем данные находятся исключительно во внутреннем локальном аппаратном разделе собственного устройства пользователя.</p></div></details>
-                <details><summary>Монетизация данных</summary><div class="details-content"><p>Разработчик не собирает, не зеркалирует, не компилирует и не передает метаданные телеметрии, основанные на вашем физическом или психологическом состоянии.</p></div></details>
-                <h2>2. Архитектура Offline-First</h2>
-                <p>В отличие от стандартных облачных сервисов, все взаимодействия происходят локально.</p>
-                <details><summary>Границы подключения</summary><div class="details-content"><p>Функции локального ведения журнала работают полностью независимо от сотовых сетей или интернет-соединений, снижая риски удаленного перехвата (атаки типа «человек посередине»).</p></div></details>
-                <details><summary>Исходящий сетевой трафик</summary><div class="details-content"><p>Внешний сетевой трафик строго ограничен управлением транзакциями, обрабатываемыми через API Google Play Billing, и интеграцией запросов нативной операционной системы устройства.</p></div></details>
-                <h2>3. Локальный доступ и восстановление учетных данных</h2>
-                <p>Локализованный механизм блокировки безопасности служит оборонительным барьером.</p>
-                <details><summary>Отсутствие мастер-доступа</summary><div class="details-content"><p>Программное обеспечение не поддерживает централизованную базу данных, «супер-пароли», административные бэкдоры или серверы восстановления учетных данных.</p></div></details>
-                <details><summary>Необратимая очистка данных</summary><div class="details-content"><p>В случае забывания PIN-кода восстановление данных технически невозможно. Единственная альтернатива — полная переустановка, что приводит к немедленному и постоянному удалению всех локальных баз данных.</p></div></details>
-                <h2>4. Клинический отказ от ответственности</h2>
-                <p>Приложение прямо отказывается от какой-либо клинической или терапевтической полезности.</p>
-                <details><summary>Исключение медицинской структуры</summary><div class="details-content"><p>Никакие данные, метрики, предложения или журналы, содержащиеся в этом программном обеспечении, не заменяют и не составляют медицинские консультации, психологическую поддержку, психиатрическое вмешательство или больничные диагностические протоколы.</p></div></details>
-                <details><summary>Предоставление «Как есть»</summary><div class="details-content"><p>Услуга предоставляется в ее текущем состоянии. Любое ухудшение здоровья, клиническая чрезвычайная ситуация или обострение симптомов остается под единоличной ответственностью и личным охватом пользователя.</p></div></details>
-                <h2>5. Физический риск и упражнения</h2>
-                <p>Модули экстренного перенаправления могут предлагать локализованные упражнения.</p>
-                <details><summary>Компенсация за физический ущерб</summary><div class="details-content"><p>Выполнение физических или сердечно-сосудистых активностей, предложенных экраном, происходит по единственному выбору и медицинскому риску пользователя.</p></div></details>
-                <h2>6. Контент, созданный пользователем (UGC)</h2>
-                <p>Приложение действует как пассивное, неконтролируемое цифровое хранилище.</p>
-                <details><summary>Юридическое присвоение и ответственность</summary><div class="details-content"><p>Пользователь сохраняет 100% юридической собственности и последующей гражданской ответственности за весь контент, заметки и медиа, импортированные или записанные в приложении.</p></div></details>
-                <h2>7. Рекомендации по рекламе и монетизации</h2>
-                <p>Для поддержания разработки приложение включает рекламные модели.</p>
-                <details><summary>Отображение рекламы и изоляция данных</summary><div class="details-content"><p>Бесплатная версия может отображать рекламу, предоставляемую сторонними сетями (например, Google AdMob). Эти сети используют базовые идентификаторы устройств для доставки. Конфиденциальные данные не передаются. См. <a href="https://policies.google.com/privacy" target="_blank">Политику конфиденциальности Google AdMob</a>.</p></div></details>
-                <h2>8. Премиум-подписка</h2>
-                <p>Пользователи могут добровольно разблокировать расширенные наборы функций.</p>
-                <details><summary>Выполнение платежей и возвраты</summary><div class="details-content"><p>Весь процесс выставления счетов обрабатывается через Google Play Billing. Запросы на возврат средств должны опосредоваться через официальные каналы Google Play Store в соответствии с их рекомендациями.</p></div></details>
-                <h2>9. Интеллектуальная собственность</h2>
-                <p>Система представляет собой исключительный актив разработчика.</p>
-                <details><summary>Защита кода</summary><div class="details-content"><p>Любая попытка декомпилировать, провести обратную разработку или распространять неофициальные модификации («Модифицированные APK») является существенным нарушением, влекущим немедленную аннуляцию лицензии.</p></div></details>
-                <h2>10. Форс-мажор и оборудование</h2>
-                <p>Защита от эксплуатационных сбоев вне инженерного контроля.</p>
-                <details><summary>Изменения устройства и исключения</summary><div class="details-content"><p>Сброс до заводских настроек, кража устройства, повреждение ОС или вредоносное ПО навсегда стирают локальные записи. Разработчик освобожден от обязательств по восстановлению данных.</p></div></details>
-                <h2>11. Ограничение ущерба</h2>
-                <p>Явные ограничения воздействия финансовых судебных разбирательств.</p>
-                <details><summary>Финансовый потолок</summary><div class="details-content"><p>Максимальная ответственность за любой доказанный ущерб строго фиксирована общей суммой, уплаченной пользователем за премиум-услуги в течение 60 дней, непосредственно предшествующих событию.</p></div></details>
-                <h2>12. Пункт о делимости</h2>
-                <p>Сохранение структурной целостности правовой основы.</p>
-                <details><summary>Изоляция положений</summary><div class="details-content"><p>Если какой-либо раздел объявлен судом недействительным, это влияет исключительно на это изолированное положение. Все остальные пункты остаются действующими и действительными.</p></div></details>
-                <h2>13. Отказ от коллективных исков</h2>
-                <p>Разрешение судебных споров строго ограничено индивидуальным масштабом.</p>
-                <details><summary>Индивидуализированное разрешение</summary><div class="details-content"><p>Пользователь прямо соглашается отказаться от права инициировать, присоединяться или участвовать в любом коллективном иске, групповом судебном разбирательстве или совместном арбитраже против разработчиков.</p></div></details>
-                <h2>14. Окончательное юридическое принятие</h2>
-                <p>Подтверждение условий, установленных при использовании.</p>
-                <details><summary>Молчаливое согласие</summary><div class="details-content"><p>Продвижение в интерфейсе приложения служит формальным цифровым одобрением, после чего претензии о незнании условий не будут приняты.</p></div></details>
-                <h2>15. Контакт и поддержка</h2>
-                <p>Каналы для административной коммуникации.</p>
-                <details><summary>Официальные каналы</summary><div class="details-content"><p>Для разъяснений или поддержки обращайтесь исключительно через официальную электронную почту поддержки, указанную на странице загрузки приложения в магазине.</p></div></details>
-            </div>
+        <div class="section">
+            <h2>8. PREMIUM SUBSCRIPTION &amp; BILLING</h2>
+            <p>Users may voluntarily unlock extended feature sets through a paid subscription.</p>
+            <ul class="doc-list">
+                <li><strong>Payment Execution &amp; Refunds:</strong> The entire billing flow is handled via Google Play Billing. Refund requests must be mediated through official Google Play Store channels subject to their guidelines.</li>
+            </ul>
         </div>
 
-        <!-- ========================================== -->
-        <!-- 9. 中文 -->
-        <!-- ========================================== -->
-        <div id="lang-zh" class="lang-block">
-            <h1>隐私政策与法律条款</h1>
-            <p class="meta">最后更新：2026年6月 // 修订版本：26.1</p>
-            <div class="terms-body">
-                <p>本文档构成具有约束力的法律协议，规范应用程序的架构、免责声明及运营条款。</p>
-                <h2>1. 设计隐私与全球合规</h2>
-                <p>应用程序按照严格的“设计隐私”原则构建。</p>
-                <details><summary>存储与加密</summary><div class="details-content"><p>系统在严格的“零知识”基础设施下运行。用户输入的所有数据仅存在于用户设备自身的本地内部硬件分区中。</p></div></details>
-                <details><summary>数据货币化</summary><div class="details-content"><p>开发者不收集、镜像、编译或传输基于您身体或心理状况的遥测元数据。</p></div></details>
-                <h2>2. 离线优先架构</h2>
-                <p>与标准的云依赖服务不同，所有交互均在本地进行。</p>
-                <details><summary>连接边界</summary><div class="details-content"><p>本地日志记录功能完全独立于蜂窝网络或互联网连接运行，降低了远程拦截风险（中间人攻击）。</p></div></details>
-                <details><summary>出站网络流量</summary><div class="details-content"><p>外部网络流量严格限于通过Google Play Billing API处理的交易管理及设备原生操作系统请求的集成。</p></div></details>
-                <h2>3. 本地访问与凭证恢复</h2>
-                <p>本地化安全锁定机制充当防御屏障。</p>
-                <details><summary>无主访问权限</summary><div class="details-content"><p>软件不维护集中式数据库、“超级密码”、管理后门或凭证恢复服务器。</p></div></details>
-                <details><summary>不可逆的数据清除</summary><div class="details-content"><p>如果忘记PIN码，数据恢复在技术上是不可能的。唯一的替代方案是完全重新安装，这将导致所有本地数据库立即被永久删除。</p></div></details>
-                <h2>4. 临床免责声明</h2>
-                <p>应用程序明确否认任何临床或治疗用途。</p>
-                <details><summary>医疗结构排除</summary><div class="details-content"><p>本软件中包含的任何数据、指标、建议或日志均不能替代或构成医疗建议、心理支持、精神科干预或医院诊断协议。</p></div></details>
-                <details><summary>“按原样”提供</summary><div class="details-content"><p>服务按其当前状态提供。任何健康状况下降、临床紧急情况或症状恶化均由用户自行负责并承担个人责任。</p></div></details>
-                <h2>5. 身体风险与运动</h2>
-                <p>紧急重定向模块可能会建议局部运动。</p>
-                <details><summary>身体伤害赔偿</summary><div class="details-content"><p>屏幕建议的身体或有氧运动的执行完全由用户自行选择并承担医疗风险。</p></div></details>
-                <h2>6. 用户生成内容（UGC）</h2>
-                <p>应用程序充当被动且不受监控的数字保险库。</p>
-                <details><summary>法律归属与责任</summary><div class="details-content"><p>用户对在应用程序内导入或记录的所有内容、笔记和媒体保留100%的法律所有权及随后的民事责任。</p></div></details>
-                <h2>7. 广告指南与货币化</h2>
-                <p>为维持开发，应用程序整合了广告模式。</p>
-                <details><summary>广告展示与数据隔离</summary><div class="details-content"><p>免费版可能会显示第三方网络（例如Google AdMob）提供的广告。这些网络使用基本设备标识符进行投放。不共享敏感数据。请参阅<a href="https://policies.google.com/privacy" target="_blank">Google AdMob隐私政策</a>。</p></div></details>
-                <h2>8. 高级订阅</h2>
-                <p>用户可以自愿解锁扩展功能集。</p>
-                <details><summary>支付执行与退款</summary><div class="details-content"><p>整个计费流程通过Google Play Billing处理。退款请求必须通过官方Google Play Store渠道进行调解，并受其准则约束。</p></div></details>
-                <h2>9. 知识产权</h2>
-                <p>系统代表开发者的独家资产。</p>
-                <details><summary>代码保护</summary><div class="details-content"><p>任何反编译、逆向工程或分发非官方修改（“修改版APK”）的尝试均构成实质性违约，将导致许可证立即被撤销。</p></div></details>
-                <h2>10. 不可抗力与硬件</h2>
-                <p>防止工程控制范围之外的操作故障。</p>
-                <details><summary>设备变更与排除</summary><div class="details-content"><p>恢复出厂设置、设备被盗、操作系统损坏或恶意软件会永久擦除本地记录。开发者免除数据重建义务。</p></div></details>
-                <h2>11. 损害限制</h2>
-                <p>对财务诉讼风险的明确限制。</p>
-                <details><summary>财务上限</summary><div class="details-content"><p>对任何已证实损害的最大责任严格固定为用户在事件发生前60天内为高级服务支付的总金额。</p></div></details>
-                <h2>12. 可分割性条款</h2>
-                <p>维护法律框架的结构完整性。</p>
-                <details><summary>条款隔离</summary><div class="details-content"><p>如果法院宣布某一部分无效，则仅影响该孤立条款。所有其他条款仍然有效且具有约束力。</p></div></details>
-                <h2>13. 集体诉讼豁免</h2>
-                <p>争议解决严格限于个人范围。</p>
-                <details><summary>个性化解决</summary><div class="details-content"><p>用户明确同意放弃针对开发者发起、加入或参与任何集体诉讼、团体诉讼或联合仲裁的权利。</p></div></details>
-                <h2>14. 最终法律接受</h2>
-                <p>确认使用时确立的条款。</p>
-                <details><summary>默示同意</summary><div class="details-content"><p>在应用程序界面中继续操作即视为正式数字认可，此后不得以不知晓条款为由提出索赔。</p></div></details>
-                <h2>15. 联系与支持</h2>
-                <p>行政沟通渠道。</p>
-                <details><summary>官方渠道</summary><div class="details-content"><p>如需澄清或支持，请仅通过应用商店下载页面上提供的官方支持电子邮件进行联系。</p></div></details>
-            </div>
+        <div class="section">
+            <h2>9. INTELLECTUAL PROPERTY &amp; CODE SAFEGUARDS</h2>
+            <p>The system represents the exclusive asset of the developer.</p>
+            <ul class="doc-list">
+                <li><strong>Code Safeguards:</strong> Any attempt to decompile, reverse engineer, or distribute unofficial modifications ("Modified APKs") constitutes a material breach resulting in immediate license revocation.</li>
+            </ul>
         </div>
 
-    </main>
+        <div class="section">
+            <h2>10. FORCE MAJEURE &amp; HARDWARE FAILURES</h2>
+            <p>Protection against operational failures outside engineering control.</p>
+            <ul class="doc-list">
+                <li><strong>Device Alterations &amp; Exclusions:</strong> Factory resets, device theft, OS corruption, or malware permanently erase local records. The developer is exempt from data reconstruction obligations.</li>
+            </ul>
+        </div>
 
-    <footer>
-        <p>SYSTEM.CORE.LICENSE // RAW DATA INTEGRITY</p>
-    </footer>
+        <div class="section">
+            <h2>11. DAMAGE LIMITATION &amp; FINANCIAL CEILING</h2>
+            <p>Explicit limits on financial litigation exposure.</p>
+            <ul class="doc-list">
+                <li><strong>Financial Ceiling:</strong> Maximum liability for any proven damage is strictly fixed to the total amount paid by the user for premium services during the 60 days immediately preceding the event.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>12. SEVERABILITY CLAUSE</h2>
+            <p>Preservation of the structural integrity of the legal framework.</p>
+            <ul class="doc-list">
+                <li><strong>Provision Isolation:</strong> If any section is declared void by a court, it affects exclusively that isolated provision. All other clauses remain operational and valid.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>13. CLASS-ACTION WAIVER</h2>
+            <p>Litigation resolution is strictly limited to the individual scope.</p>
+            <ul class="doc-list">
+                <li><strong>Individualized Resolution:</strong> The user expressly agrees to waive the right to initiate, join, or participate in any class action, group litigation, or joint arbitration against the developers.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>14. DEFINITIVE LEGAL ACCEPTANCE</h2>
+            <p>Confirmation of terms established upon use.</p>
+            <ul class="doc-list">
+                <li><strong>Tacit Consent:</strong> Advancing in the application interface serves as formal digital endorsement, after which claims of ignorance of the terms will not be accepted.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>15. CONTACT &amp; SUPPORT CHANNELS</h2>
+            <p>Channels for administrative communication.</p>
+            <ul class="doc-list">
+                <li><strong>Official Channels:</strong> For clarifications or support, contact exclusively through the official support email provided on the store application download page.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PORTUGUÊS -->
+    <!-- ========================================== -->
+    <div id="lang-pt" class="lang-block">
+        <h1 class="doc-title">POLÍTICA DE PRIVACIDADE E TERMOS LEGAIS</h1>
+        <div class="title-divider"></div>
+        <p class="last-updated">Última atualização: Junho de 2026</p>
+        <p class="intro-text">Este documento constitui um acordo legal vinculativo que rege a arquitetura, as isenções de responsabilidade e os termos operacionais do aplicativo.</p>
+
+        <div class="section">
+            <h2>1. PRIVACIDADE POR DESIGN E CONFORMIDADE GLOBAL</h2>
+            <p>O aplicativo é estruturado sob princípios estritos de Privacidade por Design, operando em conformidade com padrões internacionais de proteção de dados, incluindo GDPR, CCPA e LGPD.</p>
+            <ul class="doc-list">
+                <li><strong>Armazenamento e Criptografia:</strong> O sistema opera sob uma infraestrutura estrita de "Conhecimento Zero". Toda arquitetura inserida pelo usuário (métricas de sobriedade, registros comportamentais, registros pessoais) é armazenada exclusivamente na partição de hardware local interna do dispositivo pessoal do usuário.</li>
+                <li><strong>Monetização de Dados:</strong> A desenvolvedora não coleta, espelha, compila ou transmite metadados de telemetria relacionados à sua condição física ou psicológica.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. ARQUITETURA OFFLINE-FIRST E LIMITAÇÕES DE INFRAESTRUTURA</h2>
+            <p>Diferentemente de serviços padrão dependentes de nuvem, todas as interações ocorrem completamente fora do perímetro, controle e acesso da equipe de engenharia de desenvolvimento.</p>
+            <ul class="doc-list">
+                <li><strong>Fronteiras de Conectividade:</strong> Os recursos de registro local funcionam totalmente independentes de redes celulares ou conexões de internet, mitigando riscos de interceptação remota Man-in-the-Middle (MITM).</li>
+                <li><strong>Saídas de Rede:</strong> O tráfego de rede externa é limitado estritamente ao gerenciamento de transações processadas via Google Play Billing API e integração de requisições da camada nativa de software do dispositivo local.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. RESTRIÇÕES DE ACESSO LOCAL E RECUPERAÇÃO DE CREDENCIAIS</h2>
+            <p>O mecanismo de bloqueio de segurança localizado serve como barreira defensiva absoluta contra acesso não autorizado.</p>
+            <ul class="doc-list">
+                <li><strong>Ausência de Acesso Mestre:</strong> O software não mantém banco de dados centralizado, "senhas mestras", backdoors administrativos ou servidores de recuperação de credenciais.</li>
+                <li><strong>Purga Irreversível de Dados:</strong> Em caso de esquecimento do PIN, a recuperação de dados é tecnicamente impossível. A única alternativa é a reinstalação completa, resultando na exclusão imediata e permanente de todos os bancos de dados locais.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. ISENÇÃO DE RESPONSABILIDADE CLÍNICA E EXCLUSÃO MÉDICA</h2>
+            <p>O aplicativo declara explicitamente não possuir qualquer utilidade clínica, terapêutica ou diagnóstica.</p>
+            <ul class="doc-list">
+                <li><strong>Exclusão de Estrutura Médica:</strong> Nenhum dado, métrica, sugestão ou registro contido neste software substitui ou constitui aconselhamento médico, suporte psicológico, intervenção psiquiátrica ou protocolos de diagnóstico hospitalar.</li>
+                <li><strong>Fornecimento "Como Está":</strong> O serviço é fornecido em seu estado atual, sem garantia de qualquer tipo. Qualquer declínio de saúde, emergência clínica ou piora de sintomas permanece sob responsabilidade exclusiva e escopo pessoal do usuário.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. RISCO FÍSICO E EXERCÍCIOS VOLUNTÁRIOS</h2>
+            <p>Módulos de redirecionamento de emergência podem sugerir exercícios físicos localizados como técnica de distração.</p>
+            <ul class="doc-list">
+                <li><strong>Indenização por Danos Físicos:</strong> A execução de atividades físicas ou cardiovasculares sugeridas pela tela ocorre por livre escolha e risco médico do usuário. A desenvolvedora não assume responsabilidade por lesões sofridas.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. CONTEÚDO GERADO PELO USUÁRIO (UGC)</h2>
+            <p>O aplicativo atua como um cofre digital passivo e não monitorado para material criado pelo usuário.</p>
+            <ul class="doc-list">
+                <li><strong>Atribuição Legal e Responsabilidade:</strong> O usuário retém 100% da propriedade legal e da subsequente responsabilidade civil por todo conteúdo, notas e mídias importados ou gravados dentro do aplicativo.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. DIRETRIZES DE ANÚNCIOS E MODELO DE MONETIZAÇÃO</h2>
+            <p>Para sustentar o desenvolvimento contínuo, o aplicativo incorpora modelos publicitários de terceiros.</p>
+            <ul class="doc-list">
+                <li><strong>Exibição de Anúncios e Isolamento de Dados:</strong> A versão gratuita pode exibir anúncios fornecidos por redes de terceiros (ex: Google AdMob). Essas redes usam identificadores básicos do dispositivo para entrega. Nenhum dado sensível é compartilhado. Veja a <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade do Google AdMob</a>.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>8. ASSINATURA PREMIUM E FATURAMENTO</h2>
+            <p>Os usuários podem desbloquear voluntariamente conjuntos de funcionalidades estendidas mediante assinatura paga.</p>
+            <ul class="doc-list">
+                <li><strong>Execução de Pagamentos e Reembolsos:</strong> Todo o fluxo de faturamento é tratado via Google Play Billing. Pedidos de reembolso devem ser intermediados pelos canais oficiais da Google Play Store, sujeitos às suas diretrizes.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. PROPRIEDADE INTELECTUAL E SALVAGUARDAS DE CÓDIGO</h2>
+            <p>O sistema representa ativo exclusivo da desenvolvedora.</p>
+            <ul class="doc-list">
+                <li><strong>Salvaguardas do Código:</strong> Qualquer tentativa de descompilar, realizar engenharia reversa ou distribuir modificações não oficiais ("APKs Modificadas") constitui violação material resultando em revogação imediata da licença.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>10. FORÇA MAIOR E FALHAS DE HARDWARE</h2>
+            <p>Proteção contra falhas operacionais fora do controle de engenharia.</p>
+            <ul class="doc-list">
+                <li><strong>Alterações do Dispositivo e Exclusões:</strong> Restaurações de fábrica, furto do dispositivo, corrupção do SO ou malware apagam permanentemente registros locais. A desenvolvedora está isenta de obrigações de reconstrução de dados.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>11. LIMITAÇÃO DE DANOS E TETO FINANCEIRO</h2>
+            <p>Limites explícitos sobre exposição a litígios financeiros.</p>
+            <ul class="doc-list">
+                <li><strong>Teto Financeiro:</strong> A responsabilidade máxima por qualquer dano comprovado fixa-se estritamente ao valor total pago pelo usuário por serviços premium nos 60 dias imediatamente anteriores ao evento.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>12. CLÁUSULA DE DIVISIBILIDADE</h2>
+            <p>Preservação da integridade estrutural do arcabouço legal.</p>
+            <ul class="doc-list">
+                <li><strong>Isolamento de Disposições:</strong> Se alguma seção for declarada nula por um tribunal, afetará exclusivamente essa disposição isolada. Todas as demais cláusulas permanecem operantes e válidas.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>13. RENÚNCIA A PROCESSOS COLETIVOS</h2>
+            <p>A resolução de litígios é estritamente limitada ao escopo individual.</p>
+            <ul class="doc-list">
+                <li><strong>Resolução Individualizada:</strong> O usuário concorda expressamente em renunciar ao direito de iniciar, aderir ou participar de qualquer ação coletiva, litígio grupal ou arbitragem conjunta contra os desenvolvedores.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>14. ACEITAÇÃO LEGAL DEFINITIVA</h2>
+            <p>Confirmação dos termos estabelecidos mediante uso.</p>
+            <ul class="doc-list">
+                <li><strong>Consentimento Tácito:</strong> Avançar na interface do aplicativo serve como endosso digital formal, após o qual alegações de desconhecimento dos termos não serão aceitas.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>15. CONTATO E CANAIS DE SUPORTE</h2>
+            <p>Canais para comunicação administrativa.</p>
+            <ul class="doc-list">
+                <li><strong>Canais Oficiais:</strong> Para esclarecimentos ou suporte, entre em contato exclusivamente através do e-mail de suporte oficial fornecido na página de download do aplicativo na loja.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- ESPAÑOL -->
+    <!-- ========================================== -->
+    <div id="lang-es" class="lang-block">
+        <h1 class="doc-title">POLÍTICA DE PRIVACIDAD Y TÉRMINOS LEGALES</h1>
+        <div class="title-divider"></div>
+        <p class="last-updated">Última actualización: Junio 2026</p>
+        <p class="intro-text">Este documento constituye un acuerdo legal vinculante que rige la arquitectura, las exenciones de responsabilidad y los términos operativos de la aplicación.</p>
+
+        <div class="section">
+            <h2>1. PRIVACIDAD DESDE EL DISEÑO Y MARCO DE CUMPLIMIENTO GLOBAL</h2>
+            <p>La aplicación se estructura bajo estrictos principios de Privacidad desde el Diseño, operando en conformidad con estándares internacionales de protección de datos, incluyendo GDPR, CCPA y LGPD.</p>
+            <ul class="doc-list">
+                <li><strong>Almacenamiento y Criptografía:</strong> El sistema opera bajo una infraestructura estricta de "Conocimiento Cero". Toda arquitectura ingresada por el usuario (métricas de sobriedad, registros conductuales, registros personales) se almacena exclusivamente en la partición de hardware local interna del dispositivo personal del usuario.</li>
+                <li><strong>Monetización de Datos:</strong> El desarrollador no recopila, replica, compila ni transmite metadatos de telemetría relacionados con su condición física o psicológica.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. ARQUITECTURA OFFLINE-FIRST Y LIMITACIONES DE INFRAESTRUCTURA</h2>
+            <p>A diferencia de los servicios estándar dependientes de la nube, todas las interacciones ocurren completamente fuera del perímetro, control y acceso del equipo de ingeniería de desarrollo.</p>
+            <ul class="doc-list">
+                <li><strong>Límites de Conectividad:</strong> Las funciones de registro local funcionan totalmente independientes de redes celulares o conexiones a Internet, mitigando riesgos de interceptación remota Man-in-the-Middle (MITM).</li>
+                <li><strong>Salidas de Red:</strong> El tráfico de red externo se limita estrictamente a la gestión de transacciones procesadas a través de la API de Google Play Billing y la integración de solicitudes de la capa nativa de software del dispositivo local.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. RESTRICCIONES DE ACCESO LOCAL Y RECUPERACIÓN DE CREDENCIALES</h2>
+            <p>El mecanismo de bloqueo de seguridad localizado sirve como barrera defensiva absoluta contra accesos no autorizados.</p>
+            <ul class="doc-list">
+                <li><strong>Ausencia de Acceso Maestro:</strong> El software no mantiene base de datos centralizada, "contraseñas maestras", puertas traseras administrativas ni servidores de recuperación de credenciales.</li>
+                <li><strong>Purga Irreversible de Datos:</strong> En caso de olvido del PIN, la recuperación de datos es técnicamente imposible. La única alternativa es una reinstalación completa, resultando en la eliminación inmediata y permanente de todas las bases de datos locales.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. DESCARGO DE RESPONSABILIDAD CLÍNICA Y EXCLUSIÓN MÉDICA</h2>
+            <p>La aplicación declara explícitamente no poseer ninguna utilidad clínica, terapéutica o diagnóstica.</p>
+            <ul class="doc-list">
+                <li><strong>Exclusión de Estructura Médica:</strong> Ningún dato, métrica, sugerencia o registro contenido en este software reemplaza o constituye asesoramiento médico, apoyo psicológico, intervención psiquiátrica o protocolos de diagnóstico hospitalario.</li>
+                <li><strong>Provisión "Tal Cual":</strong> El servicio se proporciona en su estado actual, sin garantía de ningún tipo. Cualquier deterioro de la salud, emergencia clínica o empeoramiento de síntomas queda bajo responsabilidad exclusiva y alcance personal del usuario.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. RIESGO FÍSICO Y EJERCICIOS VOLUNTARIOS</h2>
+            <p>Los módulos de redirección de emergencia pueden sugerir ejercicios físicos localizados como técnica de distracción.</p>
+            <ul class="doc-list">
+                <li><strong>Indemnización por Daños Físicos:</strong> La ejecución de actividades físicas o cardiovasculares sugeridas por la pantalla ocurre por libre elección y riesgo médico del usuario. El desarrollador no asume responsabilidad por lesiones sufridas.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. CONTENIDO GENERADO POR EL USUARIO (UGC)</h2>
+            <p>La aplicación actúa como una bóveda digital pasiva y sin supervisión para material creado por el usuario.</p>
+            <ul class="doc-list">
+                <li><strong>Atribución Legal y Responsabilidad:</strong> El usuario conserva el 100% de la propiedad legal y la subsiguiente responsabilidad civil por todo contenido, notas y medios importados o grabados dentro de la aplicación.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. PAUTAS PUBLICITARIAS Y MODELO DE MONETIZACIÓN</h2>
+            <p>Para sostener el desarrollo continuo, la aplicación incorpora modelos publicitarios de terceros.</p>
+            <ul class="doc-list">
+                <li><strong>Visualización de Anuncios y Aislamiento de Datos:</strong> La versión gratuita puede mostrar anuncios proporcionados por redes de terceros (ej. Google AdMob). Estas redes utilizan identificadores básicos del dispositivo para la entrega. No se comparten datos sensibles. Consulte la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidad de Google AdMob</a>.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>8. SUSCRIPCIÓN PREMIUM Y FACTURACIÓN</h2>
+            <p>Los usuarios pueden desbloquear voluntariamente conjuntos de funciones extendidas mediante suscripción de pago.</p>
+            <ul class="doc-list">
+                <li><strong>Ejecución de Pagos y Reembolsos:</strong> Todo el flujo de facturación se maneja a través de Google Play Billing. Las solicitudes de reembolso deben ser mediadas por los canales oficiales de Google Play Store sujetos a sus directrices.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. PROPIEDAD INTELECTUAL Y SALVAGUARDIAS DE CÓDIGO</h2>
+            <p>El sistema representa activo exclusivo del desarrollador.</p>
+            <ul class="doc-list">
+                <li><strong>Salvaguardias del Código:</strong> Cualquier intento de descompilar, realizar ingeniería inversa o distribuir modificaciones no oficiales ("APKs Modificadas") constituye una violación material que resulta en revocación inmediata de la licencia.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>10. FUERZA MAYOR Y FALLAS DE HARDWARE</h2>
+            <p>Protección contra fallas operativas fuera del control de ingeniería.</p>
+            <ul class="doc-list">
+                <li><strong>Alteraciones del Dispositivo y Exclusiones:</strong> Restablecimientos de fábrica, robo del dispositivo, corrupción del SO o malware borran permanentemente registros locales. El desarrollador está exento de obligaciones de reconstrucción de datos.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>11. LIMITACIÓN DE DAÑOS Y TECHO FINANCIERO</h2>
+            <p>Límites explícitos sobre exposición a litigios financieros.</p>
+            <ul class="doc-list">
+                <li><strong>Techo Financiero:</strong> La responsabilidad máxima por cualquier daño comprobado se fija estrictamente al monto total pagado por el usuario por servicios premium durante los 60 días inmediatamente anteriores al evento.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>12. CLÁUSULA DE DIVISIBILIDAD</h2>
+            <p>Preservación de la integridad estructural del marco legal.</p>
+            <ul class="doc-list">
+                <li><strong>Aislamiento de Disposiciones:</strong> Si alguna sección es declarada nula por un tribunal, afectará exclusivamente a esa disposición aislada. Todas las demás cláusulas permanecen operativas y válidas.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>13. RENUNCIA A ACCIONES COLECTIVAS</h2>
+            <p>La resolución de litigios se limita estrictamente al ámbito individual.</p>
+            <ul class="doc-list">
+                <li><strong>Resolución Individualizada:</strong> El usuario acepta expresamente renunciar al derecho de iniciar, unirse o participar en cualquier acción colectiva, litigio grupal o arbitraje conjunto contra los desarrolladores.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>14. ACEPTACIÓN LEGAL DEFINITIVA</h2>
+            <p>Confirmación de términos establecidos mediante uso.</p>
+            <ul class="doc-list">
+                <li><strong>Consentimiento Tácito:</strong> Avanzar en la interfaz de la aplicación sirve como respaldo digital formal, después del cual no se aceptarán reclamos de ignorancia de los términos.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>15. CONTACTO Y CANALES DE SOPORTE</h2>
+            <p>Canales para comunicación administrativa.</p>
+            <ul class="doc-list">
+                <li><strong>Canales Oficiales:</strong> Para aclaraciones o soporte, contacte exclusivamente a través del correo electrónico de soporte oficial proporcionado en la página de descarga de la aplicación en la tienda.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- ITALIANO -->
+    <!-- ========================================== -->
+    <div id="lang-it" class="lang-block">
+        <h1 class="doc-title">INFORMATIVA SULLA PRIVACY E TERMINI LEGALI</h1>
+        <div class="title-divider"></div>
+        <p class="last-updated">Ultimo aggiornamento: Giugno 2026</p>
+        <p class="intro-text">Questo documento costituisce un accordo legale vincolante che regola l'architettura, le esenzioni di responsabilità e i termini operativi dell'applicazione.</p>
+
+        <div class="section">
+            <h2>1. PRIVACY BY DESIGN E QUADRO DI CONFORMITÀ GLOBALE</h2>
+            <p>L'applicazione è strutturata secondo rigorosi principi di Privacy by Design, operando in conformità agli standard internazionali di protezione dei dati, inclusi GDPR, CCPA e LGPD.</p>
+            <ul class="doc-list">
+                <li><strong>Archiviazione e Crittografia:</strong> Il sistema opera sotto una rigorosa infrastruttura "Zero-Knowledge". Tutta l'architettura inserita dall'utente (metriche di sobrietà, registri comportamentali, record personali) è archiviata esclusivamente nella partizione hardware locale interna del dispositivo personale dell'utente.</li>
+                <li><strong>Monetizzazione dei Dati:</strong> Lo sviluppatore non raccoglie, replica, compila né trasmette metadati di telemetria relativi alla condizione fisica o psicologica dell'utente.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. ARCHITETTURA OFFLINE-FIRST E LIMITAZIONI INFRASTRUTTURALI</h2>
+            <p>A differenza dei servizi standard dipendenti dal cloud, tutte le interazioni avvengono completamente al di fuori del perimetro, controllo e accesso del team di ingegneria dello sviluppo.</p>
+            <ul class="doc-list">
+                <li><strong>Limiti di Connettività:</strong> Le funzionalità di registrazione locale funzionano completamente indipendentemente dalle reti cellulari o dalle connessioni Internet, mitigando i rischi di intercettazione remota Man-in-the-Middle (MITM).</li>
+                <li><strong>Uscite di Rete:</strong> Il traffico di rete esterno è limitato strettamente alla gestione delle transazioni elaborate tramite l'API Google Play Billing e all'integrazione delle richieste del livello software nativo del dispositivo locale.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. RESTRIZIONI DI ACCESSO LOCALE E RECUPERO CREDENZIALI</h2>
+            <p>Il meccanismo di blocco della sicurezza localizzato funge da barriera difensiva assoluta contro accessi non autorizzati.</p>
+            <ul class="doc-list">
+                <li><strong>Assenza di Accesso Principale:</strong> Il software non mantiene database centralizzato, "super password", backdoor amministrative o server di recupero credenziali.</li>
+                <li><strong>Cancellazione Irreversibile dei Dati:</strong> In caso di dimenticanza del PIN, il recupero dei dati è tecnicamente impossibile. L'unica alternativa è una reinstallazione completa, con conseguente eliminazione immediata e permanente di tutti i database locali.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. ESONERO DI RESPONSABILITÀ CLINICA ED ESCLUSIONE MEDICA</h2>
+            <p>L'applicazione dichiara esplicitamente di non possedere alcuna utilità clinica, terapeutica o diagnostica.</p>
+            <ul class="doc-list">
+                <li><strong>Esclusione Struttura Medica:</strong> Nessun dato, metrica, suggerimento o registro contenuto in questo software sostituisce o costituisce consulenza medica, supporto psicologico, intervento psichiatrico o protocolli diagnostici ospedalieri.</li>
+                <li><strong>Fornitura "Così Com'è":</strong> Il servizio è fornito nello stato in cui si trova, senza garanzia di alcun tipo. Qualsiasi peggioramento della salute, emergenza clinica o aggravamento dei sintomi rimane sotto esclusiva responsabilità e ambito personale dell'utente.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. RISCHIO FISICO ED ESERCIZI VOLONTARI</h2>
+            <p>I moduli di reindirizzamento di emergenza possono suggerire esercizi fisici localizzati come tecnica di distrazione.</p>
+            <ul class="doc-list">
+                <li><strong>Indennizzo per Danni Fisici:</strong> L'esecuzione di attività fisiche o cardiovascolari suggerite dallo schermo avviene per libera scelta e rischio medico dell'utente. Lo sviluppatore non assume responsabilità per lesioni subite.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. CONTENUTI GENERATI DALL'UTENTE (UGC)</h2>
+            <p>L'applicazione agisce come una cassaforte digitale passiva e non monitorata per materiale creato dall'utente.</p>
+            <ul class="doc-list">
+                <li><strong>Attribuzione Legale e Responsabilità:</strong> L'utente conserva il 100% della proprietà legale e la successiva responsabilità civile per tutti i contenuti, note e media importati o registrati all'interno dell'applicazione.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. LINEE GUIDA PUBBLICITARIE E MODELLO DI MONETIZZAZIONE</h2>
+            <p>Per sostenere lo sviluppo continuo, l'applicazione incorpora modelli pubblicitari di terze parti.</p>
+            <ul class="doc-list">
+                <li><strong>Visualizzazione Annunci e Isolamento Dati:</strong> La versione gratuita può mostrare annunci forniti da reti di terze parti (es. Google AdMob). Queste reti utilizzano identificatori di base del dispositivo per la consegna. Nessun dato sensibile viene condiviso. Vedi la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Informativa sulla Privacy di Google AdMob</a>.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>8. ABBONAMENTO PREMIUM E FATTURAZIONE</h2>
+            <p>Gli utenti possono sbloccare volontariamente set di funzionalità estese tramite abbonamento a pagamento.</p>
+            <ul class="doc-list">
+                <li><strong>Esecuzione Pagamenti e Rimborsi:</strong> L'intero flusso di fatturazione è gestito tramite Google Play Billing. Le richieste di rimborso devono essere mediate attraverso i canali ufficiali di Google Play Store soggetti alle loro linee guida.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. PROPRIETÀ INTELLETTUALE E TUTELA DEL CODICE</h2>
+            <p>Il sistema rappresenta attivo esclusivo dello sviluppatore.</p>
+            <ul class="doc-list">
+                <li><strong>Tutela del Codice:</strong> Qualsiasi tentativo di decompilare, fare ingegneria inversa o distribuire modifiche non ufficiali ("APK Modificate") costituisce violazione materiale che comporta revoca immediata della licenza.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>10. FORZA MAGGIORE E GUASTI HARDWARE</h2>
+            <p>Protezione contro guasti operativi fuori dal controllo ingegneristico.</p>
+            <ul class="doc-list">
+                <li><strong>Alterazioni del Dispositivo ed Esclusioni:</strong> Ripristini ai dati di fabbrica, furto del dispositivo, corruzione del SO o malware cancellano permanentemente i registri locali. Lo sviluppatore è esente da obblighi di ricostruzione dei dati.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>11. LIMITAZIONE DEI DANNI E SOFFITTO FINANZIARIO</h2>
+            <p>Limiti espliciti sull'esposizione a contenziosi finanziari.</p>
+            <ul class="doc-list">
+                <li><strong>Soffitto Finanziario:</strong> La responsabilità massima per qualsiasi danno provato è fissata rigorosamente all'importo totale pagato dall'utente per servizi premium durante i 60 giorni immediatamente precedenti l'evento.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>12. CLAUSOLA DI SEPARABILITÀ</h2>
+            <p>Preservazione dell'integrità strutturale del quadro giuridico.</p>
+            <ul class="doc-list">
+                <li><strong>Isolamento delle Disposizioni:</strong> Se una sezione viene dichiarata nulla da un tribunale, ciò riguarda esclusivamente quella disposizione isolata. Tutte le altre clausole rimangono operative e valide.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>13. RINUNCIA ALLE AZIONI COLLETTIVE</h2>
+            <p>La risoluzione delle controversie è strettamente limitata all'ambito individuale.</p>
+            <ul class="doc-list">
+                <li><strong>Risoluzione Individualizzata:</strong> L'utente accetta espressamente di rinunciare al diritto di avviare, aderire o partecipare a qualsiasi azione collettiva, contenzioso di gruppo o arbitrato congiunto contro gli sviluppatori.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>14. ACCETTAZIONE LEGALE DEFINITIVA</h2>
+            <p>Conferma dei termini stabiliti mediante utilizzo.</p>
+            <ul class="doc-list">
+                <li><strong>Consenso Tacito:</strong> Avanzare nell'interfaccia dell'applicazione serve come approvazione digitale formale, dopo la quale non saranno accettate rivendicazioni di ignoranza dei termini.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>15. CONTATTO E CANALI DI SUPPORTO</h2>
+            <p>Canali per comunicazione amministrativa.</p>
+            <ul class="doc-list">
+                <li><strong>Canali Ufficiali:</strong> Per chiarimenti o supporto, contattare esclusivamente tramite l'email di supporto ufficiale fornita nella pagina di download dell'applicazione sullo store.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- FRANÇAIS -->
+    <!-- ========================================== -->
+    <div id="lang-fr" class="lang-block">
+        <h1 class="doc-title">POLITIQUE DE CONFIDENTIALITÉ ET CONDITIONS LÉGALES</h1>
+        <div class="title-divider"></div>
+        <p class="last-updated">Dernière mise à jour : Juin 2026</p>
+        <p class="intro-text">Ce document constitue un accord juridique contraignant régissant l'architecture, les exonérations de responsabilité et les conditions opérationnelles de l'application.</p>
+
+        <div class="section">
+            <h2>1. CONFIDENTIALITÉ DÈS LA CONCEPTION ET CADRE DE CONFORMITÉ MONDIAL</h2>
+            <p>L'application est structurée selon des principes stricts de Confidentialité dès la Conception, opérant en conformité avec les normes internationales de protection des données, incluant GDPR, CCPA et LGPD.</p>
+            <ul class="doc-list">
+                <li><strong>Stockage et Chiffrement :</strong> Le système fonctionne sous une infrastructure stricte de "Zéro Connaissance". Toute architecture saisie par l'utilisateur (métriques de sobriété, journaux comportementaux, enregistrements personnels) est stockée exclusivement dans la partition matérielle locale interne de l'appareil personnel de l'utilisateur.</li>
+                <li><strong>Monétisation des Données :</strong> Le développeur ne collecte, ne réplique, ne compile ni ne transmet de métadonnées de télémétrie concernant votre condition physique ou psychologique.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. ARCHITECTURE HORS LIGNE PRIORITAIRE ET LIMITATIONS D'INFRASTRUCTURE</h2>
+            <p>Contrairement aux services standards dépendants du cloud, toutes les interactions se produisent complètement en dehors du périmètre, du contrôle et de l'accès de l'équipe d'ingénierie de développement.</p>
+            <ul class="doc-list">
+                <li><strong>Limites de Connectivité :</strong> Les fonctionnalités d'enregistrement local fonctionnent entièrement indépendamment des réseaux cellulaires ou des connexions Internet, atténuant les risques d'interception à distance Man-in-the-Middle (MITM).</li>
+                <li><strong>Sorties Réseau :</strong> Le trafic réseau externe est strictement limité à la gestion des transactions traitées via l'API Google Play Billing et l'intégration des requêtes de la couche logicielle native de l'appareil local.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. RESTRICTIONS D'ACCÈS LOCAL ET RÉCUPÉRATION DES IDENTIFIANTS</h2>
+            <p>Le mécanisme de verrouillage de sécurité localisé sert de barrière défensive absolue contre les accès non autorisés.</p>
+            <ul class="doc-list">
+                <li><strong>Absence d'Accès Principal :</strong> Le logiciel ne maintient pas de base de données centralisée, de "super mots de passe", de portes dérobées administratives ou de serveurs de récupération d'identifiants.</li>
+                <li><strong>Purge Irréversible des Données :</strong> En cas d'oubli du code PIN, la récupération des données est techniquement impossible. La seule alternative est une réinstallation complète, entraînant la suppression immédiate et permanente de toutes les bases de données locales.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. CLAUSE DE NON-RESPONSABILITÉ CLINIQUE ET EXCLUSION MÉDICALE</h2>
+            <p>L'application déclare explicitement ne posséder aucune utilité clinique, thérapeutique ou diagnostique.</p>
+            <ul class="doc-list">
+                <li><strong>Exclusion de Structure Médicale :</strong> Aucune donnée, métrique, suggestion ou journal contenu dans ce logiciel ne remplace ou ne constitue un avis médical, un soutien psychologique, une intervention psychiatrique ou des protocoles de diagnostic hospitalier.</li>
+                <li><strong>Fourniture "Tel Quel" :</strong> Le service est fourni dans son état actuel, sans garantie d'aucune sorte. Toute détérioration de la santé, urgence clinique ou aggravation des symptômes reste sous la responsabilité exclusive et la portée personnelle de l'utilisateur.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. RISQUE PHYSIQUE ET EXERCICES VOLONTAIRES</h2>
+            <p>Les modules de redirection d'urgence peuvent suggérer des exercices physiques localisés comme technique de distraction.</p>
+            <ul class="doc-list">
+                <li><strong>Indemnisation pour Dommages Physiques :</strong> L'exécution d'activités physiques ou cardiovasculaires suggérées par l'écran se fait au seul choix et risque médical de l'utilisateur. Le développeur n'assume aucune responsabilité pour les blessures subies.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. CONTENU GÉNÉRÉ PAR L'UTILISATEUR (CGU)</h2>
+            <p>L'application agit comme un coffre-fort numérique passif et non surveillé pour le matériel créé par l'utilisateur.</p>
+            <ul class="doc-list">
+                <li><strong>Attribution Légale et Responsabilité :</strong> L'utilisateur conserve 100 % de la propriété légale et la responsabilité civile subséquente pour tout contenu, note et média importé ou enregistré dans l'application.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. DIRECTIVES PUBLICITAIRES ET MODÈLE DE MONÉTISATION</h2>
+            <p>Pour soutenir le développement continu, l'application intègre des modèles publicitaires tiers.</p>
+            <ul class="doc-list">
+                <li><strong>Affichage des Publicités et Isolement des Données :</strong> La version gratuite peut afficher des publicités fournies par des réseaux tiers (ex. Google AdMob). Ces réseaux utilisent des identifiants de base de l'appareil pour la diffusion. Aucune donnée sensible n'est partagée. Voir la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Politique de Confidentialité de Google AdMob</a>.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>8. ABONNEMENT PREMIUM ET FACTURATION</h2>
+            <p>Les utilisateurs peuvent volontairement débloquer des ensembles de fonctionnalités étendus via un abonnement payant.</p>
+            <ul class="doc-list">
+                <li><strong>Exécution des Paiements et Remboursements :</strong> L'ensemble du flux de facturation est géré via Google Play Billing. Les demandes de remboursement doivent être médiées par les canaux officiels de Google Play Store soumis à leurs directives.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. PROPRIÉTÉ INTELLECTUELLE ET SAUVEGARDES DU CODE</h2>
+            <p>Le système représente un actif exclusif du développeur.</p>
+            <ul class="doc-list">
+                <li><strong>Sauvegardes du Code :</strong> Toute tentative de décompiler, de faire de l'ingénierie inverse ou de distribuer des modifications non officielles ("APK Modifiés") constitue une violation matérielle entraînant la révocation immédiate de la licence.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>10. FORCE MAJEURE ET DÉFAILLANCES MATÉRIELLES</h2>
+            <p>Protection contre les défaillances opérationnelles hors contrôle technique.</p>
+            <ul class="doc-list">
+                <li><strong>Altérations de l'Appareil et Exclusions :</strong> Les réinitialisations d'usine, le vol de l'appareil, la corruption de l'OS ou les logiciels malveillants effacent définitivement les enregistrements locaux. Le développeur est exonéré des obligations de reconstruction des données.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>11. LIMITATION DES DOMMAGES ET PLAFOND FINANCIER</h2>
+            <p>Limites explicites sur l'exposition aux litiges financiers.</p>
+            <ul class="doc-list">
+                <li><strong>Plafond Financier :</strong> La responsabilité maximale pour tout dommage prouvé est strictement fixée au montant total payé par l'utilisateur pour les services premium pendant les 60 jours précédant immédiatement l'événement.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>12. CLAUSE DE DIVISIBILITÉ</h2>
+            <p>Préservation de l'intégrité structurelle du cadre juridique.</p>
+            <ul class="doc-list">
+                <li><strong>Isolement des Dispositions :</strong> Si une section est déclarée nulle par un tribunal, cela affecte exclusivement cette disposition isolée. Toutes les autres clauses restent opérationnelles et valides.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>13. RENONCIATION AUX ACTIONS COLLECTIVES</h2>
+            <p>La résolution des litiges est strictement limitée au cadre individuel.</p>
+            <ul class="doc-list">
+                <li><strong>Résolution Individualisée :</strong> L'utilisateur accepte expressément de renoncer au droit d'intenter, de rejoindre ou de participer à toute action collective, litige de groupe ou arbitrage conjoint contre les développeurs.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>14. ACCEPTATION LÉGALE DÉFINITIVE</h2>
+            <p>Confirmation des termes établis lors de l'utilisation.</p>
+            <ul class="doc-list">
+                <li><strong>Consentement Tacite :</strong> Avancer dans l'interface de l'application sert d'approbation numérique formelle, après quoi les réclamations d'ignorance des termes ne seront pas acceptées.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>15. CONTACT ET CANAUX DE SUPPORT</h2>
+            <p>Canaux pour communication administrative.</p>
+            <ul class="doc-list">
+                <li><strong>Canaux Officiels :</strong> Pour des éclaircissements ou du support, contactez exclusivement via l'e-mail de support officiel fourni sur la page de téléchargement de l'application sur le magasin.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- DEUTSCH -->
+    <!-- ========================================== -->
+    <div id="lang-de" class="lang-block">
+        <h1 class="doc-title">DATENSCHUTZRICHTLINIE UND RECHTLICHE BEDINGUNGEN</h1>
+        <div class="title-divider"></div>
+        <p class="last-updated">Letzte Aktualisierung: Juni 2026</p>
+        <p class="intro-text">Dieses Dokument stellt eine verbindliche rechtliche Vereinbarung dar, die die Architektur, Haftungsausschlüsse und Betriebsbedingungen der Anwendung regelt.</p>
+
+        <div class="section">
+            <h2>1. DATENSCHUTZ DURCH TECHNIKGESTALTUNG UND GLOBALES KONFORMITÄTSRAHMENWERK</h2>
+            <p>Die Anwendung ist nach strengen Prinzipien des Datenschutzes durch Technikgestaltung strukturiert und entspricht internationalen Datenschutzstandards einschließlich GDPR, CCPA und LGPD.</p>
+            <ul class="doc-list">
+                <li><strong>Speicherung und Verschlüsselung:</strong> Das System arbeitet unter einer strengen "Zero-Knowledge"-Infrastruktur. Alle vom Benutzer eingegebenen Daten (Nüchternheitsmetriken, Verhaltensprotokolle, persönliche Aufzeichnungen) werden ausschließlich in der lokalen internen Hardware-Partition des persönlichen Geräts des Benutzers gespeichert.</li>
+                <li><strong>Datenmonetarisierung:</strong> Der Entwickler sammelt, spiegelt, kompiliert oder überträgt keine Telemetrie-Metadaten bezüglich Ihrer physischen oder psychologischen Verfassung.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. OFFLINE-FIRST-ARCHITEKTUR UND INFRASTRUKTURELLE BESCHRÄNKUNGEN</h2>
+            <p>Im Gegensatz zu Standard-Cloud-abhängigen Diensten finden alle Interaktionen vollständig außerhalb des Perimeters, der Kontrolle und des Zugriffs des Entwicklungsteams statt.</p>
+            <ul class="doc-list">
+                <li><strong>Konnektivitätsgrenzen:</strong> Lokale Protokollierungsfunktionen funktionieren vollständig unabhängig von Mobilfunknetzen oder Internetverbindungen und mindern Risiken einer Fernabfangung durch Man-in-the-Middle-Angriffe (MITM).</li>
+                <li><strong>Netzwerkausgänge:</strong> Externer Netzwerkverkehr ist streng auf die Verwaltung von Transaktionen beschränkt, die über die Google Play Billing API verarbeitet werden, sowie auf die Integration von Anforderungen der nativen Softwareschicht des lokalen Geräts.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. LOKALE ZUGRIFFSBESCHRÄNKUNGEN UND WIEDERHERSTELLUNG VON ANMELDEDATEN</h2>
+            <p>Der lokalisierte Sicherheitsverriegelungsmechanismus dient als absolute defensive Barriere gegen unbefugten Zugriff.</p>
+            <ul class="doc-list">
+                <li><strong>Fehlen eines Master-Zugriffs:</strong> Die Software verwaltet keine zentrale Datenbank, "Super-Passwörter", administrative Hintertüren oder Server zur Wiederherstellung von Anmeldedaten.</li>
+                <li><strong>Irreversible Datenlöschung:</strong> Im Falle einer vergessenen PIN ist die Datenwiederherstellung technisch unmöglich. Die einzige Alternative ist eine vollständige Neuinstallation, was zur sofortigen und dauerhaften Löschung aller lokalen Datenbanken führt.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. KLINISCHER HAFTUNGSAUSSCHLUSS UND MEDIZINISCHE AUSNAHME</h2>
+            <p>Die Anwendung erklärt ausdrücklich, keinen klinischen, therapeutischen oder diagnostischen Nutzen zu besitzen.</p>
+            <ul class="doc-list">
+                <li><strong>Ausschluss medizinischer Struktur:</strong> Keine Daten, Metriken, Vorschläge oder Protokolle in dieser Software ersetzen oder stellen medizinische Beratung, psychologische Unterstützung, psychiatrische Intervention oder Krankenhaus-Diagnoseprotokolle dar.</li>
+                <li><strong>Bereitstellung "Wie Besehen":</strong> Der Dienst wird in seinem aktuellen Zustand ohne jegliche Garantie bereitgestellt. Jeder Gesundheitsrückgang, klinische Notfall oder jede Verschlechterung der Symptome liegt in der alleinigen Verantwortung und im persönlichen Bereich des Benutzers.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. KÖRPERLICHES RISIKO UND FREIWILLIGE ÜBUNGEN</h2>
+            <p>Notfall-Umleitungsmodule können lokale körperliche Übungen als Ablenkungstechnik vorschlagen.</p>
+            <ul class="doc-list">
+                <li><strong>Entschädigung für körperliche Schäden:</strong> Die Ausführung von körperlichen oder kardiovaskulären Aktivitäten, die vom Bildschirm vorgeschlagen werden, erfolgt nach alleiniger Wahl und auf eigenes medizinisches Risiko des Benutzers. Der Entwickler übernimmt keine Haftung für erlittene Verletzungen.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. VOM BENUTZER ERSTELLTE INHALTE (UGC)</h2>
+            <p>Die Anwendung fungiert als passiver, nicht überwachter digitaler Tresor für vom Benutzer erstelltes Material.</p>
+            <ul class="doc-list">
+                <li><strong>Rechtliche Zuschreibung und Haftung:</strong> Der Benutzer behält 100 % des rechtlichen Eigentums und die anschließende zivilrechtliche Haftung für alle Inhalte, Notizen und Medien, die innerhalb der Anwendung importiert oder aufgezeichnet wurden.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. WERBERICHTLINIEN UND MONETARISIERUNGSMODELL</h2>
+            <p>Zur Aufrechterhaltung der kontinuierlichen Entwicklung integriert die Anwendung Werbemodelle Dritter.</p>
+            <ul class="doc-list">
+                <li><strong>Anzeigenanzeige und Datenisolierung:</strong> Die kostenlose Version kann Anzeigen anzeigen, die von Drittanbieter-Netzwerken (z. B. Google AdMob) bereitgestellt werden. Diese Netzwerke verwenden grundlegende Geräteidentifikatoren für die Zustellung. Keine sensiblen Daten werden geteilt. Siehe die <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Datenschutzrichtlinie von Google AdMob</a>.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>8. PREMIUM-ABONNEMENT UND ABRECHNUNG</h2>
+            <p>Benutzer können erweiterte Funktionssets freiwillig über ein kostenpflichtiges Abonnement freischalten.</p>
+            <ul class="doc-list">
+                <li><strong>Zahlungsabwicklung und Rückerstattungen:</strong> Der gesamte Abrechnungsfluss wird über Google Play Billing abgewickelt. Rückerstattungsanfragen müssen über offizielle Google Play Store-Kanäle vermittelt werden, die deren Richtlinien unterliegen.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. GEISTIGES EIGENTUM UND CODE-SCHUTZMAßNAHMEN</h2>
+            <p>Das System stellt ein exklusives Asset des Entwicklers dar.</p>
+            <ul class="doc-list">
+                <li><strong>Code-Schutzmaßnahmen:</strong> Jeder Versuch, den Code zu dekompilieren, Reverse Engineering zu betreiben oder inoffizielle Modifikationen ("Modifizierte APKs") zu verbreiten, stellt einen materiellen Verstoß dar, der zur sofortigen Lizenzwiderrufung führt.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>10. HÖHERE GEWALT UND HARDWARE-AUSFÄLLE</h2>
+            <p>Schutz vor Betriebsausfällen außerhalb der technischen Kontrolle.</p>
+            <ul class="doc-list">
+                <li><strong>Geräteänderungen und Ausschlüsse:</strong> Werksreset, Gerätediebstahl, OS-Korruption oder Malware löschen lokale Aufzeichnungen dauerhaft. Der Entwickler ist von Verpflichtungen zur Datenrekonstruktion befreit.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>11. SCHADENSBEGRENZUNG UND FINANZIELLER DECKEL</h2>
+            <p>Explizite Grenzen für die Exposition gegenüber finanziellen Rechtsstreitigkeiten.</p>
+            <ul class="doc-list">
+                <li><strong>Finanzieller Deckel:</strong> Die maximale Haftung für jeden nachgewiesenen Schaden ist strikt auf den Gesamtbetrag festgelegt, den der Benutzer während der 60 Tage unmittelbar vor dem Ereignis für Premium-Dienste gezahlt hat.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>12. SALVATORISCHE KLAUSEL</h2>
+            <p>Erhaltung der strukturellen Integrität des rechtlichen Rahmens.</p>
+            <ul class="doc-list">
+                <li><strong>Isolierung von Bestimmungen:</strong> Wenn ein Abschnitt von einem Gericht für nichtig erklärt wird, betrifft dies ausschließlich diese isolierte Bestimmung. Alle anderen Klauseln bleiben betriebsbereit und gültig.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>13. VERZICHT AUF SAMMELKLAGE</h2>
+            <p>Die Beilegung von Rechtsstreitigkeiten ist streng auf den individuellen Rahmen beschränkt.</p>
+            <ul class="doc-list">
+                <li><strong>Individualisierte Lösung:</strong> Der Benutzer stimmt ausdrücklich zu, auf das Recht zu verzichten, eine Sammelklage, Gruppenklage oder gemeinsame Schiedsgerichtsbarkeit gegen die Entwickler einzuleiten, sich anzuschließen oder daran teilzunehmen.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>14. ENDGÜLTIGE RECHTLICHE AKZEPTANZ</h2>
+            <p>Bestätigung der bei der Nutzung festgelegten Bedingungen.</p>
+            <ul class="doc-list">
+                <li><strong>Stillschweigende Zustimmung:</strong> Das Fortschreiten in der Anwendungsbenutzeroberfläche dient als formale digitale Zustimmung, wonach Ansprüche auf Unkenntnis der Bedingungen nicht akzeptiert werden.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>15. KONTAKT UND SUPPORT-KANÄLE</h2>
+            <p>Kanäle für administrative Kommunikation.</p>
+            <ul class="doc-list">
+                <li><strong>Offizielle Kanäle:</strong> Für Klarstellungen oder Support kontaktieren Sie ausschließlich über die offizielle Support-E-Mail, die auf der Download-Seite der Anwendung im Store angegeben ist.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 日本語 -->
+    <!-- ========================================== -->
+    <div id="lang-ja" class="lang-block">
+        <h1 class="doc-title">プライバシーポリシーおよび法的条件</h1>
+        <div class="title-divider"></div>
+        <p class="last-updated">最終更新日：2026年6月</p>
+        <p class="intro-text">本ドキュメントは、アプリケーションのアーキテクチャ、責任免除、および運用条件を規定する拘束力のある法的合意を構成します。</p>
+
+        <div class="section">
+            <h2>1. プライバシーバイデザインとグローバルコンプライアンスフレームワーク</h2>
+            <p>アプリケーションは厳格なプライバシーバイデザインの原則に基づいて構築され、GDPR、CCPA、LGPDを含む国際データ保護基準に準拠して動作します。</p>
+            <ul class="doc-list">
+                <li><strong>ストレージと暗号化：</strong>システムは厳格な「ゼロ知識」インフラストラクチャの下で動作します。ユーザーが入力したすべてのアーキテクチャ（禁酒メトリクス、行動ログ、個人記録）は、ユーザー自身のデバイスのローカル内部ハードウェアパーティション内にのみ保存されます。</li>
+                <li><strong>データの収益化：</strong>開発者は、あなたの身体的または心理的状态に関するテレメトリメタデータを収集、複製、コンパイル、または送信しません。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. オフラインファーストアーキテクチャとインフラ制限</h2>
+            <p>標準的なクラウド依存サービスとは異なり、すべてのインタラクションは開発エンジニアリングチームの範囲、制御、およびアクセスの外で完全に発生します。</p>
+            <ul class="doc-list">
+                <li><strong>接続性の境界：</strong>ローカルログ機能は携帯電話ネットワークやインターネット接続から完全に独立して機能し、リモート中間者攻撃（MITM）の傍受リスクを軽減します。</li>
+                <li><strong>ネットワークアウトバウンド：</strong>外部ネットワークトラフィックは、Google Play Billing APIを通じて処理されるトランザクション管理およびローカルデバイスネイティブソフトウェアレイヤーリクエストの統合に厳密に制限されます。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. ローカルアクセス制限と認証情報の回復</h2>
+            <p>ローカライズされたセキュリティロック機構は、不正アクセスに対する絶対的な防御障壁として機能します。</p>
+            <ul class="doc-list">
+                <li><strong>マスターアクセスの欠如：</strong>ソフトウェアは集中データベース、「スーパーパスワード」、管理者バックドア、または認証情報回復サーバーを維持しません。</li>
+                <li><strong>不可逆的なデータ消去：</strong>PINを忘れた場合、データの回復は技術的に不可能です。唯一の代替手段は完全な再インストールであり、これによりすべてのローカルデータベースが即座に永久に削除されます。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. 臨床的免責事項と医療除外</h2>
+            <p>アプリケーションは、臨床的、治療的、または診断的な有用性を一切持たないことを明示的に宣言します。</p>
+            <ul class="doc-list">
+                <li><strong>医療構造の除外：</strong>このソフトウェアに含まれるデータ、指標、提案、またはログは、医療アドバイス、心理的サポート、精神医学的介入、または病院診断プロトコルに代わるものでも、それらを構成するものでもありません。</li>
+                <li><strong>「現状有姿」での提供：</strong>サービスはいかなる保証もなく現在の状態で提供されます。健康状態の悪化、臨床的緊急事態、または症状の悪化は、ユーザーの単独の責任および個人的範囲内に留まります。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. 身体的リスクと自主的運動</h2>
+            <p>緊急リダイレクトモジュールは、気晴らしの手法として局所的な身体運動を提案する場合があります。</p>
+            <ul class="doc-list">
+                <li><strong>身体的損害の補償：</strong>画面によって提案される身体活動または心血管活動の実行は、ユーザーの単独の選択および医療リスクにおいて行われます。開発者は負傷について一切の責任を負いません。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. ユーザー生成コンテンツ（UGC）</h2>
+            <p>アプリケーションは、ユーザーが作成した素材のための受動的で監視されていないデジタル金庫として機能します。</p>
+            <ul class="doc-list">
+                <li><strong>法的帰属と責任：</strong>ユーザーは、アプリケーション内でインポートまたは記録されたすべてのコンテンツ、メモ、およびメディアに対する100％の法的所有権およびその後の民事責任を保持します。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. 広告ガイドラインと収益化モデル</h2>
+            <p>継続的な開発を維持するために、アプリケーションはサードパーティの広告モデルを組み込んでいます。</p>
+            <ul class="doc-list">
+                <li><strong>広告表示とデータ分離：</strong>無料版には、サードパーティネットワーク（例：Google AdMob）が提供する広告が表示される場合があります。これらのネットワークは配信のために基本的なデバイス識別子を使用します。機密データは共有されません。<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google AdMobプライバシーポリシー</a>をご覧ください。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>8. プレミアムサブスクリプションと請求</h2>
+            <p>ユーザーは有料サブスクリプションを通じて拡張機能セットを任意でアンロックできます。</p>
+            <ul class="doc-list">
+                <li><strong>支払い実行と払い戻し：</strong>すべての請求フローはGoogle Play Billingを通じて処理されます。払い戻しのリクエストは、そのガイドラインに従う公式Google Play Storeチャネルを通じて仲介される必要があります。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. 知的財産とコード保護</h2>
+            <p>システムは開発者の独占資産を表します。</p>
+            <ul class="doc-list">
+                <li><strong>コード保護：</strong>逆コンパイル、リバースエンジニアリング、または非公式な修正（「改造APK」）を配布しようとする試みは、即時のライセンス取り消しにつながる重大な違反を構成します。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>10. 不可抗力とハードウェア障害</h2>
+            <p>エンジニアリング制御外の運用障害からの保護。</p>
+            <ul class="doc-list">
+                <li><strong>デバイスの変更と除外：</strong>工場出荷時の設定へのリセット、デバイスの盗難、OSの破損、またはマルウェアはローカルレコードを永久に消去します。開発者はデータ再構築の義務から免除されます。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>11. 損害の制限と財務上限</h2>
+            <p>財務訴訟への露出に関する明示的な制限。</p>
+            <ul class="doc-list">
+                <li><strong>財務上限：</strong>証明された損害に対する最大責任は、イベントの直前60日間にユーザーがプレミアムサービスに対して支払った合計金額に厳密に固定されます。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>12. 分離可能性条項</h2>
+            <p>法的枠組みの構造的完全性の保全。</p>
+            <ul class="doc-list">
+                <li><strong>規定の分離：</strong>セクションが裁判所によって無効であると宣言された場合、それはその孤立した規定にのみ影響します。他のすべての条項は稼働中で有効のままです。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>13. クラスアクション放棄</h2>
+            <p>訴訟解決は厳密に個別の範囲に限定されます。</p>
+            <ul class="doc-list">
+                <li><strong>個別化された解決：</strong>ユーザーは、開発者に対してクラスアクション、グループ訴訟、または共同仲裁を開始、参加、または関与する権利を放棄することに明示的に同意します。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>14. 最終的な法的承認</h2>
+            <p>使用時に確立された条件の確認。</p>
+            <ul class="doc-list">
+                <li><strong>黙示の同意：</strong>アプリケーションインターフェースを進むことは正式なデジタル承認として機能し、その後、条件の無知の主張は受け入れられません。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>15. お問い合わせとサポートチャネル</h2>
+            <p>管理通信のためのチャネル。</p>
+            <ul class="doc-list">
+                <li><strong>公式チャネル：</strong>説明やサポートについては、ストアのアプリケーションダウンロードページに記載されている公式サポートメールを介してのみお問い合わせください。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- РУССКИЙ -->
+    <!-- ========================================== -->
+    <div id="lang-ru" class="lang-block">
+        <h1 class="doc-title">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ И ЮРИДИЧЕСКИЕ УСЛОВИЯ</h1>
+        <div class="title-divider"></div>
+        <p class="last-updated">Последнее обновление: Июнь 2026</p>
+        <p class="intro-text">Этот документ представляет собой юридически обязывающее соглашение, регулирующее архитектуру, отказы от ответственности и условия эксплуатации приложения.</p>
+
+        <div class="section">
+            <h2>1. КОНФИДЕНЦИАЛЬНОСТЬ ПО ДИЗАЙНУ И ГЛОБАЛЬНАЯ РАМКА СООТВЕТСТВИЯ</h2>
+            <p>Приложение структурировано на основе строгих принципов конфиденциальности по дизайну, работая в соответствии с международными стандартами защиты данных, включая GDPR, CCPA и LGPD.</p>
+            <ul class="doc-list">
+                <li><strong>Хранение и шифрование:</strong> Система работает под строгой инфраструктурой «Нулевого знания». Вся введённая пользователем архитектура (метрики трезвости, поведенческие журналы, личные записи) хранится исключительно во внутреннем локальном аппаратном разделе личного устройства пользователя.</li>
+                <li><strong>Монетизация данных:</strong> Разработчик не собирает, не зеркалирует, не компилирует и не передаёт метаданные телеметрии, касающиеся вашего физического или психологического состояния.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. АРХИТЕКТУРА OFFLINE-FIRST И ОГРАНИЧЕНИЯ ИНФРАСТРУКТУРЫ</h2>
+            <p>В отличие от стандартных облачных сервисов, все взаимодействия происходят полностью за пределами периметра, контроля и доступа команды разработки.</p>
+            <ul class="doc-list">
+                <li><strong>Границы подключения:</strong> Функции локального ведения журнала работают полностью независимо от сотовых сетей или интернет-соединений, снижая риски удалённого перехвата типа «человек посередине» (MITM).</li>
+                <li><strong>Сетевые исходящие соединения:</strong> Внешний сетевой трафик строго ограничен управлением транзакциями, обрабатываемыми через API Google Play Billing, и интеграцией запросов нативного программного слоя локального устройства.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. ОГРАНИЧЕНИЯ ЛОКАЛЬНОГО ДОСТУПА И ВОССТАНОВЛЕНИЕ УЧЁТНЫХ ДАННЫХ</h2>
+            <p>Локализованный механизм блокировки безопасности служит абсолютным защитным барьером против несанкционированного доступа.</p>
+            <ul class="doc-list">
+                <li><strong>Отсутствие мастер-доступа:</strong> Программное обеспечение не поддерживает централизованную базу данных, «супер-пароли», административные бэкдоры или серверы восстановления учётных данных.</li>
+                <li><strong>Необратимая очистка данных:</strong> В случае забывания PIN-кода восстановление данных технически невозможно. Единственная альтернатива — полная переустановка, что приводит к немедленному и постоянному удалению всех локальных баз данных.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. КЛИНИЧЕСКИЙ ОТКАЗ ОТ ОТВЕТСТВЕННОСТИ И МЕДИЦИНСКОЕ ИСКЛЮЧЕНИЕ</h2>
+            <p>Приложение прямо заявляет об отсутствии какой-либо клинической, терапевтической или диагностической полезности.</p>
+            <ul class="doc-list">
+                <li><strong>Исключение медицинской структуры:</strong> Никакие данные, метрики, предложения или журналы, содержащиеся в этом программном обеспечении, не заменяют и не составляют медицинские консультации, психологическую поддержку, психиатрическое вмешательство или больничные диагностические протоколы.</li>
+                <li><strong>Предоставление «Как есть»:</strong> Услуга предоставляется в текущем состоянии без каких-либо гарантий. Любое ухудшение здоровья, клиническая чрезвычайная ситуация или обострение симптомов остаётся под единоличной ответственностью и личным охватом пользователя.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. ФИЗИЧЕСКИЙ РИСК И ДОБРОВОЛЬНЫЕ УПРАЖНЕНИЯ</h2>
+            <p>Модули экстренного перенаправления могут предлагать локализованные физические упражнения как технику отвлечения.</p>
+            <ul class="doc-list">
+                <li><strong>Компенсация за физический ущерб:</strong> Выполнение физических или сердечно-сосудистых активностей, предложенных экраном, происходит по единственному выбору и медицинскому риску пользователя. Разработчик не несёт ответственности за полученные травмы.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. КОНТЕНТ, СОЗДАННЫЙ ПОЛЬЗОВАТЕЛЕМ (UGC)</h2>
+            <p>Приложение действует как пассивное, неконтролируемое цифровое хранилище для материалов, созданных пользователем.</p>
+            <ul class="doc-list">
+                <li><strong>Юридическое присвоение и ответственность:</strong> Пользователь сохраняет 100% юридической собственности и последующей гражданской ответственности за весь контент, заметки и медиа, импортированные или записанные в приложении.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. РЕКЛАМНЫЕ РУКОВОДСТВА И МОДЕЛЬ МОНЕТИЗАЦИИ</h2>
+            <p>Для поддержания непрерывной разработки приложение включает рекламные модели третьих сторон.</p>
+            <ul class="doc-list">
+                <li><strong>Отображение рекламы и изоляция данных:</strong> Бесплатная версия может отображать рекламу, предоставляемую сторонними сетями (например, Google AdMob). Эти сети используют базовые идентификаторы устройств для доставки. Конфиденциальные данные не передаются. См. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Политику конфиденциальности Google AdMob</a>.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>8. ПРЕМИУМ-ПОДПИСКА И ВЫСТАВЛЕНИЕ СЧЕТОВ</h2>
+            <p>Пользователи могут добровольно разблокировать расширенные наборы функций через платную подписку.</p>
+            <ul class="doc-list">
+                <li><strong>Выполнение платежей и возвраты:</strong> Весь процесс выставления счетов обрабатывается через Google Play Billing. Запросы на возврат средств должны опосредоваться через официальные каналы Google Play Store в соответствии с их рекомендациями.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. ИНТЕЛЛЕКТУАЛЬНАЯ СОБСТВЕННОСТЬ И ЗАЩИТА КОДА</h2>
+            <p>Система представляет исключительный актив разработчика.</p>
+            <ul class="doc-list">
+                <li><strong>Защита кода:</strong> Любая попытка декомпилировать, провести обратную разработку или распространять неофициальные модификации («Модифицированные APK») является существенным нарушением, влекущим немедленную аннуляцию лицензии.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>10. ФОРС-МАЖОР И АППАРАТНЫЕ СБОИ</h2>
+            <p>Защита от эксплуатационных сбоев вне инженерного контроля.</p>
+            <ul class="doc-list">
+                <li><strong>Изменения устройства и исключения:</strong> Сброс до заводских настроек, кража устройства, повреждение ОС или вредоносное ПО навсегда стирают локальные записи. Разработчик освобождён от обязательств по восстановлению данных.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>11. ОГРАНИЧЕНИЕ УЩЕРБА И ФИНАНСОВЫЙ ПОТОЛОК</h2>
+            <p>Явные ограничения воздействия финансовых судебных разбирательств.</p>
+            <ul class="doc-list">
+                <li><strong>Финансовый потолок:</strong> Максимальная ответственность за любой доказанный ущерб строго фиксирована общей суммой, уплаченной пользователем за премиум-услуги в течение 60 дней, непосредственно предшествующих событию.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>12. ПУНКТ О ДЕЛИМОСТИ</h2>
+            <p>Сохранение структурной целостности правовой основы.</p>
+            <ul class="doc-list">
+                <li><strong>Изоляция положений:</strong> Если какой-либо раздел объявлен судом недействительным, это влияет исключительно на это изолированное положение. Все остальные пункты остаются действующими и действительными.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>13. ОТКАЗ ОТ КОЛЛЕКТИВНЫХ ИСКОВ</h2>
+            <p>Разрешение судебных споров строго ограничено индивидуальным масштабом.</p>
+            <ul class="doc-list">
+                <li><strong>Индивидуализированное разрешение:</strong> Пользователь прямо соглашается отказаться от права инициировать, присоединяться или участвовать в любом коллективном иске, групповом судебном разбирательстве или совместном арбитраже против разработчиков.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>14. ОКОНЧАТЕЛЬНОЕ ЮРИДИЧЕСКОЕ ПРИНЯТИЕ</h2>
+            <p>Подтверждение условий, установленных при использовании.</p>
+            <ul class="doc-list">
+                <li><strong>Молчаливое согласие:</strong> Продвижение в интерфейсе приложения служит формальным цифровым одобрением, после чего претензии о незнании условий не будут приняты.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>15. КОНТАКТ И КАНАЛЫ ПОДДЕРЖКИ</h2>
+            <p>Каналы для административной коммуникации.</p>
+            <ul class="doc-list">
+                <li><strong>Официальные каналы:</strong> Для разъяснений или поддержки обращайтесь исключительно через официальную электронную почту поддержки, указанную на странице загрузки приложения в магазине.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 中文 -->
+    <!-- ========================================== -->
+    <div id="lang-zh" class="lang-block">
+        <h1 class="doc-title">隐私政策与法律条款</h1>
+        <div class="title-divider"></div>
+        <p class="last-updated">最后更新：2026年6月</p>
+        <p class="intro-text">本文档构成具有约束力的法律协议，规范应用程序的架构、责任豁免及运营条款。</p>
+
+        <div class="section">
+            <h2>1. 设计隐私与全球合规框架</h2>
+            <p>应用程序按照严格的"设计隐私"原则构建，遵守包括GDPR、CCPA和LGPD在内的国际数据保护标准。</p>
+            <ul class="doc-list">
+                <li><strong>存储与加密：</strong>系统在严格的"零知识"基础设施下运行。用户输入的所有架构（清醒度指标、行为日志、个人记录）仅存储在用户个人设备的本地内部硬件分区中。</li>
+                <li><strong>数据货币化：</strong>开发者不收集、镜像、编译或传输关于您身体或心理状况的遥测元数据。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. 离线优先架构与基础设施限制</h2>
+            <p>与标准的云依赖服务不同，所有交互完全发生在开发工程团队的范围、控制和访问之外。</p>
+            <ul class="doc-list">
+                <li><strong>连接边界：</strong>本地日志记录功能完全独立于蜂窝网络或互联网连接运行，降低了远程中间人攻击（MITM）拦截风险。</li>
+                <li><strong>网络出站：</strong>外部网络流量严格限于通过Google Play Billing API处理的交易管理及本地设备原生软件层请求的集成。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. 本地访问限制与凭证恢复</h2>
+            <p>本地化安全锁定机制充当针对未授权访问的绝对防御屏障。</p>
+            <ul class="doc-list">
+                <li><strong>无主访问权限：</strong>软件不维护集中式数据库、"超级密码"、管理后门或凭证恢复服务器。</li>
+                <li><strong>不可逆的数据清除：</strong>如果忘记PIN码，数据恢复在技术上是不可能的。唯一的替代方案是完全重新安装，这将导致所有本地数据库立即被永久删除。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. 临床免责声明与医疗排除</h2>
+            <p>应用程序明确声明不具有任何临床、治疗或诊断用途。</p>
+            <ul class="doc-list">
+                <li><strong>医疗结构排除：</strong>本软件中包含的任何数据、指标、建议或日志均不能替代或构成医疗建议、心理支持、精神科干预或医院诊断协议。</li>
+                <li><strong>"按原样"提供：</strong>服务按其当前状态提供，不提供任何形式的保证。任何健康状况下降、临床紧急情况或症状恶化均由用户自行负责并承担个人责任。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. 身体风险与自愿运动</h2>
+            <p>紧急重定向模块可能会建议局部身体运动作为分散注意力的技巧。</p>
+            <ul class="doc-list">
+                <li><strong>身体伤害赔偿：</strong>屏幕建议的身体或有氧运动的执行完全由用户自行选择并承担医疗风险。开发者对所受伤害不承担任何责任。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. 用户生成内容（UGC）</h2>
+            <p>应用程序充当被动且不受监控的数字保险库，用于存储用户创建的材料。</p>
+            <ul class="doc-list">
+                <li><strong>法律归属与责任：</strong>用户对在应用程序内导入或记录的所有内容、笔记和媒体保留100%的法律所有权及随后的民事责任。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. 广告指南与货币化模式</h2>
+            <p>为维持持续开发，应用程序整合了第三方广告模式。</p>
+            <ul class="doc-list">
+                <li><strong>广告展示与数据隔离：</strong>免费版可能会显示第三方网络（例如Google AdMob）提供的广告。这些网络使用基本设备标识符进行投放。不共享敏感数据。请参阅<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google AdMob隐私政策</a>。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>8. 高级订阅与计费</h2>
+            <p>用户可以通过付费订阅自愿解锁扩展功能集。</p>
+            <ul class="doc-list">
+                <li><strong>支付执行与退款：</strong>整个计费流程通过Google Play Billing处理。退款请求必须通过官方Google Play Store渠道进行调解，并受其准则约束。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. 知识产权与代码保护</h2>
+            <p>系统代表开发者的独家资产。</p>
+            <ul class="doc-list">
+                <li><strong>代码保护：</strong>任何反编译、逆向工程或分发非官方修改（"修改版APK"）的尝试均构成实质性违约，将导致许可证立即被撤销。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>10. 不可抗力与硬件故障</h2>
+            <p>防止工程控制范围之外的操作故障。</p>
+            <ul class="doc-list">
+                <li><strong>设备变更与排除：</strong>恢复出厂设置、设备被盗、操作系统损坏或恶意软件会永久擦除本地记录。开发者免除数据重建义务。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>11. 损害限制与财务上限</h2>
+            <p>对财务诉讼风险的明确限制。</p>
+            <ul class="doc-list">
+                <li><strong>财务上限：</strong>对任何已证实损害的最大责任严格固定为用户在事件发生前60天内为高级服务支付的总金额。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>12. 可分割性条款</h2>
+            <p>维护法律框架的结构完整性。</p>
+            <ul class="doc-list">
+                <li><strong>条款隔离：</strong>如果法院宣布某一部分无效，则仅影响该孤立条款。所有其他条款仍然有效且具有约束力。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>13. 集体诉讼豁免</h2>
+            <p>争议解决严格限于个人范围。</p>
+            <ul class="doc-list">
+                <li><strong>个性化解决：</strong>用户明确同意放弃针对开发者发起、加入或参与任何集体诉讼、团体诉讼或联合仲裁的权利。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>14. 最终法律接受</h2>
+            <p>确认使用时确立的条款。</p>
+            <ul class="doc-list">
+                <li><strong>默示同意：</strong>在应用程序界面中继续操作即视为正式数字认可，此后不得以不知晓条款为由提出索赔。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>15. 联系与支持渠道</h2>
+            <p>行政沟通渠道。</p>
+            <ul class="doc-list">
+                <li><strong>官方渠道：</strong>如需澄清或支持，请仅通过应用商店下载页面上提供的官方支持电子邮件进行联系。</li>
+            </ul>
+        </div>
+    </div>
+
 </div>
 
 <script>
-    function toggleTheme() {
-        const html = document.documentElement;
-        html.setAttribute('data-theme', 
-            html.getAttribute('data-theme') === 'light' ? 'dark' : 'light'
-        );
-    }
-
     function switchLang(lang) {
         document.querySelectorAll('.lang-block').forEach(el => el.classList.remove('active'));
-        const target = document.getElementById(`lang-${lang}`);
+        const target = document.getElementById('lang-' + lang);
         if (target) target.classList.add('active');
-        
-        // Atualiza o atributo lang do HTML para acessibilidade
         document.documentElement.lang = lang;
     }
 </script>
 </body>
 </html>
-
